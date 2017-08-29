@@ -1,0 +1,178 @@
+<header-main *ngIf="!! user" [displayMenu]="false"></header-main>
+<main class="payment" *ngIf="!! bookingDetails">
+  <booking-header [booking]="bookingDetails" [tour]="tour"></booking-header>
+  <div class="grey-bg step-1">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-4">
+          <ul class="tab-list">
+            <li class="active">
+              <a href="javascript:void(0)">
+                <span>1</span>
+                <div class="tab-detail">
+                  <h4>Traveller Details</h4>
+                </div>
+              </a>
+            </li>
+            <li class="active">
+              <a href="javascript:void(0)">
+                <span>2</span>
+                <div class="tab-detail">
+                  <h4>Payment</h4>
+                </a>
+              </li>
+              <li class="disabled">
+                <a href="javascript:void(0)">
+                  <span>3</span>
+                  <div class="tab-detail">
+                    <h4>Confirmation</h4>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-8">
+            <form >
+                <section class="right-wrap payment-wrap" [formGroup]="cardForm">
+                  <h3>Payment Method</h3>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="radio-wrap">
+                        <input id="radio-a" class="radio-custom" name="radio-group" checked type="radio" #payByPaypal (click)="detectChanges()">
+                        <label for="radio-a" class="radio-custom-label"><img src="images/paypal.png" alt=""></label>
+                      </div>
+                      <div class="radio-wrap">
+                        <input id="radio-b" class="radio-custom" name="radio-group" type="radio" #payByCard (click)="detectChanges()">
+                        <label for="radio-b" class="radio-custom-label">Pay with Credit Card</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="payByCard.checked">
+                    <div class="col-12">
+                      <div class="payment-form">
+                        <div class="row">
+                          <div class="col-sm-9">
+                            <div class="form-group">
+                              <label for="nameOnCard">Name on card</label>
+                              <div class="input-wrap">
+                                <input type="text" name="" class="form-control" id="nameOnCard" placeholder="Name on card" formControlName="nameOnCard">
+                              </div>
+                              <div *ngIf="cardForm.controls['nameOnCard'].errors && cardForm.controls['nameOnCard'].touched" class="has-error">
+                                <div *ngIf="cardForm.controls.nameOnCard.hasError('required')">You have to fill in Name to continue.</div>
+                                <div *ngIf="cardForm.controls.nameOnCard.hasError('minlength')">Min characters required is 2.</div>
+                                <div *ngIf="cardForm.controls.nameOnCard.hasError('maxlength')">Max characters allowed is 30.</div>
+                                <div *ngIf="cardForm.controls.nameOnCard.hasError('validateFirstName')">Please type valid Name to continue.</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-9">
+
+                            <div class="form-group">
+                              <label for="cardNumber">Card Number</label>
+                              <div class="input-wrap">
+                                <input type="text" name="" class="form-control" id="cardNumber" placeholder="Credit number" formControlName="cardNumber" (keyup)="setCardType(cardNumber.value)" #cardNumber>
+                              </div>
+                              <div *ngIf="cardForm.controls['cardNumber'].errors && cardForm.controls['cardNumber'].touched" class="has-error">
+                                <div *ngIf="cardForm.controls.cardNumber.hasError('required')">You have to fill in Card Number to continue.</div>
+                                <div *ngIf="cardForm.controls.cardNumber.hasError('minlength')">Min characters required is 12.</div>
+                                <div *ngIf="cardForm.controls.cardNumber.hasError('maxlength')">Max characters allowed is 19.</div>
+                                <div *ngIf="cardForm.controls.cardNumber.hasError('creditCard')">Please type valid Card Number.</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-2">
+                            <div class="side-img">
+                              <span class="fa fa-cc-visa fa-2x" *ngIf="cardForm.value.cardType=='visa'"></span>
+                              <span class="fa fa-cc-mastercard fa-2x" *ngIf="cardForm.value.cardType=='mastercard'"></span>
+                              <span class="fa fa-cc-amex fa-2x" *ngIf="cardForm.value.cardType=='amex'"></span>
+                              <span class="fa fa-cc-discover fa-2x" *ngIf="cardForm.value.cardType=='discover'"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label for="exDate">Expiry Month</label>
+                              <div class="select-style">
+                                <select class="select" formControlName="expiryMonth" id="exDate">
+                                  <option>01</option>
+                                  <option>02</option>
+                                  <option>03</option>
+                                  <option>04</option>
+                                  <option>05</option>
+                                  <option>06</option>
+                                  <option>07</option>
+                                  <option>08</option>
+                                  <option>09</option>
+                                  <option>10</option>
+                                  <option>11</option>
+                                  <option>12</option>
+                                </select>
+                              </div>
+                              <div *ngIf="cardForm.controls['expiryMonth'].errors && cardForm.controls['expiryMonth'].touched" class="has-error">
+                                <div *ngIf="cardForm.controls.expiryMonth.hasError('required')">You have to select Expiry Year to continue.</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label for="exDate">Expiry Year</label>
+                              <div class="select-style">
+                                <select class="select" formControlName="expiryYear" id="exDate">
+                                  <option>2017</option>
+                                  <option>2018</option>
+                                  <option>2019</option>
+                                  <option>2020</option>
+                                  <option>2021</option>
+                                  <option>2022</option>
+                                  <option>2023</option>
+                                </select>
+                              </div>
+                              <div *ngIf="cardForm.controls['expiryYear'].errors && cardForm.controls['expiryYear'].touched" class="has-error">
+                                <div *ngIf="cardForm.controls.expiryYear.hasError('required')">You have to select Expiry Year to continue.</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-9">
+                            <div class="form-group">
+                              <label for="cvv">CVV <span></span></label>
+                              <div class="input-wrap">
+                                <input type="text" name="" class="form-control" id="cvv" placeholder="CVV" formControlName="cvvNumber">
+                              </div>
+                              <div *ngIf="cardForm.controls['cvvNumber'].errors && cardForm.controls['cvvNumber'].touched" class="has-error">
+                                <div *ngIf="cardForm.controls.cvvNumber.hasError('required')">You have to fill in CVV Number to continue.</div>
+                                <div *ngIf="cardForm.controls.cvvNumber.hasError('minlength')">Min characters required is 3.</div>
+                                <div *ngIf="cardForm.controls.cvvNumber.hasError('maxlength')">Max characters allowed is 4.</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <p *ngIf="!!cardError" class="process-wrap has-error">{{cardError}}</p>
+                <p *ngIf="isProcessing" class="process-wrap">Your request is under processing. Please wait for a while.</p>
+                <div class="form-group signup-option">
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <p>By clicking the 'Next' button below, you have read and agreed width our <a [routerLink]="['/terms']"> Terms & Conditions</a> and <a [routerLink]="['/privacy']"> Privacy Policy</a>for us to process your tour booking.</p>
+                    </div>
+                    <div class="col-sm-4">
+                      <button [hidden]="!payByCard.checked" [disabled]="!cardForm.valid" type="button" class="btn green-btn" (click)="doCardPayment()">Proceed Payment<span><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+                      <button [hidden]="!payByPaypal.checked" type="button" class="btn green-btn" (click)="doPaypalPayment()">Proceed Payment<span><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>

@@ -1,0 +1,41 @@
+.info {
+    margin: 40px 0 0;
+    padding: 0;
+    list-style: none;
+
+    &__item {
+        margin-top: 15px;
+        @include clearfix();
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &__icon {
+        float: left;
+        width: 20px;
+
+        position: relative;
+        top: 3px;
+        margin-right: 20px;
+
+        font-size: $base-font-size;
+        color: $label-color;
+    }
+
+    &__content {
+        float: left;
+    }
+
+    &__link {
+        font-weight: $heading-font-weight;
+        font-size: $font-size-sd;
+        color: $brand-color;
+    }
+
+    &__text {
+        margin-bottom: 5px;
+        font-size: $font-size-sd;
+    }
+}

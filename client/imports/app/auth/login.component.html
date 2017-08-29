@@ -1,0 +1,153 @@
+<!--<div class="login-wrap">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6 side-images">
+				<div class="table-wrapper">
+					<div class="center-content">
+						<h3 class="title-line">ATORVIA</h3>
+						<p>Mauris non tempor quam, et lacinia sapien. Mauris accumsan eros eget libero posuere vulputate. Etiam elit elit, elementum sed varius at, adipiscing vitae est.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="table-wrapper side-form">
+					<div class="center-content login-form">
+						<form [formGroup]="loginForm" #f="ngForm" (ngSubmit)="login()" id="input-icon">
+							<div class="form-group">
+								<button type="button" class="facebook-login" (click)="fblogin()"><span><i class="fa fa-facebook-official" aria-hidden="true"></i></span>Login with Facebook</button>
+							</div>
+							<div class="form-group">
+								<label for="loginEmail">Email</label>
+								<div class="input-wrap">
+									<input type="email" class="form-control" placeholder="Email" formControlName="email"/>
+									<span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+								</div>
+								<div *ngIf="loginForm.controls['email'].errors && loginForm.controls['email'].touched" class="has-error">
+									<div [hidden]="!loginForm.controls['email'].errors.required">You have to fill in Email to login.</div>
+									<div [hidden]="!loginForm.controls['email'].errors.minlength">Min 5 characters required.</div>
+									<div [hidden]="!loginForm.controls['email'].errors.maxlength">Max 50 characters allowed.</div>
+									<div [hidden]="!loginForm.controls['email'].errors.validateEmail">Invalid email address.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="loginPassword">Password</label>
+								<div class="input-wrap">
+									<input type="password" class="form-control" placeholder="Password" formControlName="password"/>
+									<span><i class="fa fa-lock" aria-hidden="true"></i></span>
+								</div>
+								<div *ngIf="loginForm.controls['password'].errors && loginForm.controls['password'].touched" class="has-error">
+									<div [hidden]="!loginForm.controls['password'].errors.required">You have to fill in Password to login.</div>
+									<div [hidden]="!loginForm.controls['password'].errors.minlength">Minimum 8 characters required.</div>
+									<div [hidden]="!loginForm.controls['password'].errors.maxlength">Maximum 30 characters allowed.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="checkbox">
+									Remember me for 30 days
+									<label class="switch">
+										<input type="checkbox" [checked]="rememberMe" (change)="rememberMe = $event.target.checked" />
+										<div class="slider">
+											<span class="on">On</span>
+											<span class="off">Off</span>
+										</div>
+									</label>
+								</div>
+							</div>
+							<div class="form-group forget-pass">
+								<div class="row">
+									<div class="col-lg-6 push-lg-6">
+										<button type="submit" class="btn green-btn" [disabled]="!loginForm.valid">Login</button>
+
+									</div>
+									<div class="col-lg-6 pull-lg-6 forget-pass-link">
+										<a [routerLink]="['/recover']">Forgot Password?</a>
+									</div>
+								</div>
+							</div>
+							<div class="form-group add-account">
+								<div class="row">
+									<div class="col-7">
+										<a href="javascript:void(0)">Don't have an account?</a>
+									</div>
+									<div class="col-5 text-right">
+										<a [routerLink]="['/signup']" class="green-text">Sign up now</a>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-7">
+										<a href="javascript:void(0)">Didn't get verification email?</a>
+									</div>
+									<div class="col-5 text-right">
+										<a [routerLink]="['/resend-email']" class="green-text">Resend it Now</a>
+									</div>
+								</div>
+							</div>
+						</form>
+
+						<div [hidden]="error == ''">
+							<p class="md-warn" layout="row" layout-fill layout-padding layout-margin>
+								<p class="md-body-1 has-error">{{ error }}</p>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>-->
+
+<main class="auth-wrapper" role="main">
+
+	<!--Authentication Display Column-->
+	<div class="auth-display auth-display--login">
+		<a [routerLink]="['/']" class="auth-display__logo">
+			<img src="img/logo-white.png" alt="">
+		</a>
+		<div class="auth-display__content">
+			<h2 class="auth-display__heading">Welcome Back!</h2>
+			<p class="auth-display__text">Atorvia handpicked over thousands of tours for your next vacation.</p>
+		</div>
+	</div>
+
+	<!--Authentication Content Column-->
+	<div class="auth-content">
+		<div class="auth-content__outer">
+			<div class="auth-content__inner">
+				<div class="auth-content__wrapper">
+					<h1 class="auth-content__heading">Login</h1>
+					<p class="auth-content__subheading">Login with Facebook or using your existing atorvia account.</p>
+					<form class="auth-form" [formGroup]="loginForm" #f="ngForm" (ngSubmit)="login()">
+						<!--Facebook Login Button-->
+						<button class="button button--facebook button--full auth-form__button" (click)="fblogin()"><i class="fa fa-facebook-official"></i> Login with Facebook</button>
+
+						<!--Login Separator-->
+						<div class="auth-content__separator">
+							<span class="auth-content__separator__text">Or continue with</span>
+						</div>
+
+						<!--Login Email Input-->
+						<div class="auth-form__row">
+							<label for="userEmail">Email</label>
+							<input id="userEmail" class="auth-form__input" type="email" placeholder="Email" formControlName="email">
+							<i class="material-icons auth-form__icon">mail</i>
+						</div>
+						<!--Login Password Input-->
+						<div class="auth-form__row">
+							<label for="userPassword">Password</label>
+							<input id="userPassword" class="auth-form__input" type="password" placeholder="Password" formControlName="password">
+							<i class="material-icons auth-form__icon">lock</i>
+							<a [routerLink]="['/recover']" class="auth-form__action">Forgot your password?</a>
+						</div>
+						<!--Login Button-->
+						<div class="auth-form__row">
+							<button type="submit" class="button button--primary auth-form__button auth-form__button--login">Login</button>
+						</div>
+						<p class="auth-form__cta">Don't have an account? <a [routerLink]="['/signup']" class="auth-form__link">Sign up now</a>.</p>
+						<p class="auth-form__cta">Didn't receive your verify email? <a [routerLink]="['/resend-email']" class="auth-form__link">Resend Verification</a>.</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

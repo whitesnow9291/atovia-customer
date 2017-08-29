@@ -1,0 +1,68 @@
+.cta {
+    width: 100%;
+    padding: 20px 0;
+
+    &__content {
+        padding: 8px 0;
+        @include grid-column(6);
+
+        @include grid-media( $tablet) {
+            padding: 16px 0 6px;
+        }
+
+        @include grid-media( $laptop ) {
+            @include grid-column(9);
+        }
+    }
+
+    &__action {
+        @include grid-column(6);
+
+        @include grid-media( $laptop ) {
+            @include grid-column(3);
+        }
+    }
+
+    &__place {
+        display: inline-block;
+        margin: 0 0 0 5px;
+
+        font-weight: $medium-font-weight;
+        font-size: $font-size-sm;
+        color: white;
+
+        @include grid-media( $tablet ) {
+            font-size: $font-size-sd;
+        }
+    }
+
+    &__icon {
+        margin-top: -4px;
+        vertical-align: middle;
+
+        font-size: $font-size-sm;
+        color: white;
+
+        @include grid-media( $tablet ) {
+            font-size: $font-size-sd;
+        }
+    }
+
+    &__button {
+        float: right;
+        padding: 5px 10px;
+        border-color: white;
+        background: transparent;
+        
+        font-size: $font-size-sm;
+        color: white;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        @include grid-media( $tablet ) {
+            padding: 10px 20px;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+$interest-layout: (
+    columns: 3,
+    gutter: 20px
+);
+
+.interest-layout {
+    @include grid-container;
+    @include grid-collapse($interest-layout);
+
+    @include grid-media( $desktop ) {
+        max-width: 1170px;
+        margin: 0 auto;
+    }
+
+    &__featured {
+        @include grid-column;
+
+        @include grid-media( $laptop ) {
+            @include grid-column(1, $interest-layout);
+        }
+    }
+
+    &__general {
+        @include grid-column;
+
+        @include grid-media( $laptop ) {
+            @include grid-column(2, $interest-layout);
+        }
+    }
+}

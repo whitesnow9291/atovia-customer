@@ -1,0 +1,68 @@
+/*=============================
+=            Fonts            =
+=============================*/
+$base-font-family: 			'aktiv-grotesk', Helvetica, Arial, sans-serif !default;
+$base-font-size: 			16px !default;
+
+$light-font-weight:         300 !default;
+$base-font-weight: 			400 !default;
+$medium-font-weight: 		500 !default;
+$button-font-weight:        700 !default;
+$heading-font-weight:       800 !default;
+
+$font-size-xs: 				10px !default;
+$font-size-sm:				12px !default;
+$font-size-sd:				14px !default;
+$font-size-zeta: 			18px !default;
+$font-size-epsilon: 		20px !default;
+$font-size-delta: 			24px !default;
+$font-size-gamma: 			36px !default;
+$font-size-beta: 			48px !default;
+$font-size-alpha: 			64px !default;
+$font-size-zeus: 			88px !default;
+
+/*===============================
+=            Borders            =
+===============================*/
+$base-border-radius: 		3px;
+$round-border-radius: 		50px;
+$circle-border-radius: 		50%;
+
+
+/*==================================
+=            Box Shadow            =
+====================================*/
+$base-box-shadow:           0 1px 6px rgba(black, 0.1);
+$hover-box-shadow:          0 2px 12px rgba(black, 0.15);
+
+$card-box-shadow:           0 2px 24px rgba(black, 0.1);
+$card-hover-box-shadow:     0 8px 40px rgba(black, 0.15);
+
+$button-box-shadow:         0 2px 12px rgba(black, 0.15);
+
+
+
+
+/*==================================
+=            Media Grid Map        =
+====================================*/
+$small-mobile: (
+    media: 375px
+);
+
+$large-mobile: (
+    media: 414px
+);
+
+$tablet: (
+    media: 768px
+);
+
+$laptop: (
+    media: 992px
+);
+
+$desktop: (
+    media: 1200px
+);
+

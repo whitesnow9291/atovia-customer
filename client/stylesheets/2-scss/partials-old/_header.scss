@@ -1,0 +1,70 @@
+.navbar-toggleable-sm .navbar-collapse {
+	padding: 50px 15px;
+	display: inline-block!important;
+	@media (max-width: $ipad) {
+		height: 0;
+		padding: 0;
+		opacity: 0;
+  }
+	.nav-item {
+		padding-left: 50px;
+		@media (max-width: $ipad) {
+			padding: 0;
+    }
+		a {
+			color: $white;
+			font-size: $font-14;
+    }
+		&:hover {
+			margin-bottom: 2px solid #fff;
+    }
+
+		.dropdown-toggle {
+			@include border-radius (4px, 4px, 4px, 4px);
+			padding: 10px 15px;
+			margin-top: -5px;
+			@include border-all (1px, solid, $white-2);
+			@media (max-width: $ipad) {
+				display: inline-block;
+				margin-top: 5px;
+      }
+    }
+
+		.dropdown-menu {
+			left: auto;
+			@extend .right-0;
+			@include border-radius(0, 0, 0, 0);
+			top: 42px;
+			a {
+				color: $green-color;
+				font-size: $font-14;
+				font-weight: $weight_700;
+      }
+    }
+  }
+}
+.navbar-toggler-icon {
+	margin-top: 10px;
+	color: $white;
+	border: 0;
+}
+.navbar-toggleable-sm .navbar-collapse.show {
+	@media (max-width: $ipad) {
+		height: auto;
+		padding: 15px;
+		opacity: 1;
+		left: 0;
+		right: 0;
+		position: absolute;
+		top: 50px;
+		background: transparent;
+		padding: 0;
+	}
+	.navbar-toggler-icon {
+		margin-top: 10px;
+		color: $white;
+		border: 0;
+		right: 0;
+		top: 5;
+	}
+}

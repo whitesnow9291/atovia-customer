@@ -1,0 +1,201 @@
+<header-main *ngIf="!! user" [displayMenu]="false"></header-main>
+<main class="payment confirmation" *ngIf="!! bookingDetails">
+  <booking-header [booking]="bookingDetails" [tour]="tour"></booking-header>
+  <div class="grey-bg step-1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <ul class="tab-list">
+            <li class="completed">
+              <a href="javascript:void(0)">
+                <span><i class="fa fa-check" aria-hidden="true"></i></span>
+                <div class="tab-detail">
+                  <h4>Traveller Details</h4>
+                </div>
+              </a>
+            </li>
+            <li class="completed" *ngIf="bookingDetails.tour.hasFlight">
+              <a href="javascript:void(0)">
+                <span><i class="fa fa-check" aria-hidden="true"></i></span>
+                <div class="tab-detail">
+                  <h4>Payment</h4>
+                </a>
+              </li>
+              <li class="active">
+                <a href="javascript:void(0)">
+                  <span><i class="fa fa-check" aria-hidden="true"></i></span>
+                  <div class="tab-detail">
+                    <h4>Confirmation</h4>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-8">
+            <form>
+              <section class="right-wrap">
+                <div class="tour-header">
+                  <h3>Payment Confirmation</h3>
+                </div>
+                <div class="steps step1-form">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <div class="tag-img">
+                        <img src="images/tag.png" alt=""/>
+                      </div>
+                    </div>
+                    <div class="col-sm-10">
+                      <div class="thanks-box">
+                        <h4>Thanks for booking with Atorvia.</h4>
+                        <p>We have sent you an email confirmation for the tour. Our supplier will review the availability and confirm your booking within 24 hours. You will recieve an email confirmation from the supplier soon.</p>
+                        <p>If you have any questions regarding your booking, please contact us at <a href="mailto:support@atorvia.com">support@atorvia.com</a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="second-wrap">
+                  <div class="row">
+                    <div class="col-12 booking-summary">
+                      <h3>Your Booking Summary</h3>
+                      <dl class="row">
+                        <dt class="col-4">Booking ID</dt>
+                        <dd class="col-8">{{bookingDetails.uniqueId}}</dd>
+
+                        <dt class="col-4">Booking Date</dt>
+                        <dd class="col-8">{{bookingDetails.bookingDate | date}}</dd>
+
+                        <dt class="col-4">Contact Person</dt>
+                        <dd class="col-8">{{bookingDetails.travellers[0].firstName}} {{bookingDetails.travellers[0].lastName}}</dd>
+
+                        <dt class="col-4">Billing Address</dt>
+                        <dd class="col-8">{{bookingDetails.travellers[0].addressLine1}} {{bookingDetails.travellers[0].suburb}} {{bookingDetails.travellers[0].state}} {{bookingDetails.travellers[0].country}} {{bookingDetails.travellers[0].postCode}}</dd>
+
+                        <dt class="col-sm-4">Payment Method</dt>
+                        <dd class="col-sm-8" *ngIf="bookingDetails.paymentInfo?.method=='express_checkout'">Paypal</dd>
+                        <dd class="col-sm-8" *ngIf="bookingDetails.paymentInfo?.method=='credit_card'">Credit Card</dd>
+                      </dl>
+                    </div>
+                    <div class="travel-detail">
+                      <div class="tarvel-title">
+                        <div class="row">
+                          <div class="col-lg-2">
+                            <div class="img-wrp">
+                                <span *ngIf="bookingDetails.tour.featuredImage?.url"><img src="uploads/images/{{booking.tour.featuredImage.id}}-80-80.jpg" /></span>
+                            </div>
+                          </div>
+                          <div class="col-lg-10">
+                            <h5>{{bookingDetails.tour.name}}</h5>
+                            <p>
+                              <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>{{bookingDetails.tour.destination}}
+                              <star-rating *ngIf="!! tour" [rating]="tour.rating" [disable]="true"></star-rating>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="travel-desc">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <div class="row">
+                              <div class="col-lg-4">
+                                <img src="images/dd.png" alt="" />
+                              </div>
+                              <div class="col-lg-8">
+                                <h5>Departure Date</h5>
+                                <p>{{bookingDetails.startDate | date}}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-4">
+                            <div class="row">
+                              <div class="col-lg-4">
+                                <img src="images/rd.png" alt="" />
+                              </div>
+                              <div class="col-lg-8">
+                                <h5>Return Date</h5>
+                                <p>{{bookingDetails.endDate | date}}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-4">
+                            <div class="row">
+                              <div class="col-lg-4">
+                                <img src="images/adult.png" alt="" />
+                              </div>
+                              <div class="col-lg-8">
+                                <h5>Travellers</h5>
+                                <p>{{bookingDetails.numOfAdults}} Adult / {{bookingDetails.numOfChild}} Child</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-4">
+                            <div class="row">
+                              <div class="col-lg-4">
+                                <img src="images/hotels.png" alt="" />
+                              </div>
+                              <div class="col-lg-8">
+                                <h5>Hotels</h5>
+                                <p *ngIf="bookingDetails.tour.noOfNights > 0">{{bookingDetails.tour.noOfNights}} Nights</p>
+                                <p *ngIf="! bookingDetails.tour.noOfNights">No Hotels</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-4">
+                            <div class="row">
+                              <div class="col-lg-4">
+                                <img src="images/meal.png" alt="" />
+                              </div>
+                              <div class="col-lg-8">
+                                <h5>Meals</h5>
+                                <p>{{bookingDetails.tour.totalMeals}}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-4">
+                            <div class="row">
+                              <div class="col-lg-4">
+                                <img src="images/cost.png" alt="" />
+                              </div>
+                              <div class="col-lg-8">
+                                <h5>Total Price</h5>
+                                <p><currency [amount]=bookingDetails.totalPrice [currencyCode]=bookingDetails.currencyCode [convert]=false></currency></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="important-info">
+                      <div class="row">
+                        <div class="col-12">
+                          <h3>Important Information</h3>
+                          <ul>
+                            <li>All prices include GST.</li>
+                            <li>The cut-off date is for email bookings made prior to midnight (AEDST) on the date specified.</li>
+                            <li>A day covers 'daylight hours' but refers generally to not saying onsight overnight. A person attending multiple days in a row is entitiled to say on sight for the intervening nights. Please enter the number of days attending per person.</li>
+                            <li>Children under the age of 5 are free(although $5 insurance is required for non-member children).</li>
+                            <li>Family rate applies for two adults (18+) and two children (between the ages of 5 and 17 inclusive). Additional children can be added at the discounted rate.</li>
+                          </ul>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="signup-option">
+                      <div class="row">
+                        <div class="col-lg-8">
+                          <p><a *ngIf="bookingDetails.tour?.cancellationPolicy?.url" [href]="bookingDetails.tour.cancellationPolicy.url" download>Download tour cancellation policy</a></p>
+                          <p><a *ngIf="bookingDetails.tour?.refundPolicy?.url" [href]="bookingDetails.tour.refundPolicy.url" download>Download Atorvia refund policy</a></p>
+                          <button class="btn green-btn home-page" (click)="downloadVoucher()">Download Voucher</button>
+                        </div>
+                        <div class="col-lg-4">
+                          <button type="button" class="btn green-btn" [routerLink]="['/']">Back to HomePage</button>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </section>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>

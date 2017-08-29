@@ -1,0 +1,334 @@
+<header-main *ngIf="!!user"></header-main>
+<main class="allbooking booking2" *ngIf="!! booking">
+  <div class="grey-bg">
+    <div class="container">
+      <div class="row justify-content-sm-center">
+        <div class="col-xl-10">
+          <div class="row">
+            <div class="col-md-4">
+              <a [routerLink]="['/bookings']" class="green-anchor"><span><i class="fa fa-angle-left" aria-hidden="true"></i></span>See all bookings</a>
+            </div>
+            <div class="col-md-8 text-right side-btn">
+              <button class="cancel btn grey-btn" [routerLink]="['/bookings/cancel', booking._id]" *ngIf="departInDays > 0 && booking.cancelled == false && booking.paymentInfo?.status == 'approved'">Cancel and request a refund</button>
+              <button class="btn grey-btn pull-right" style="margin-right: 0px;" (click)="makePayment()" *ngIf="booking.paymentInfo?.status != 'approved'">Make Payment</button>
+              <button class="btn green-btn pull-right" style="width: 200px;" *ngIf="booking.paymentInfo?.status == 'approved' " (click)="downloadVoucher(booking._id)">Download Voucher</button>
+              <button class="btn green-btn pull-left" style="width: 200px;margin-left: 185px;" *ngIf="booking.completed == true && booking.confirmed == true && booking.cancelled == false && ! booking.tour.hasRated && booking.paymentInfo.status == 'approved'" [routerLink]="['/booking/rate', booking._id]">Rate Tour</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-10">
+          <!--booking-details-->
+          <div class="booking-details">
+            <div class="booking-img">
+              <img *ngIf="! booking.tour.featuredImage?.url" src="images/trip.png" alt="">
+              <img *ngIf="!! booking.tour.featuredImage?.url" src="uploads/images/{{booking.tour.featuredImage.id}}-300-300.jpg" alt="">
+            </div>
+            <div class="booking-desc">
+              <div class="hdr">
+                <h3>{{booking.tour.name}}</h3>
+                <p>
+                  <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                  {{booking.tour.destination}}
+                  <star-rating *ngIf="!! booking.tour.rating" [rating]="booking.tour.rating" [disable]="true"></star-rating>
+                </p>
+              </div>
+              <div class="booking-info">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h6>Booking ID</h6>
+                    <p *ngIf="!! booking.uniqueId">{{booking.uniqueId}}</p>
+                    <p *ngIf="! booking.uniqueId">N.A</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <h6>Booking date</h6>
+                    <p>{{booking.bookingDate | date}}</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <h6>Status</h6>
+                    <p>{{bookingStatus}}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-7">
+                    <h6>Departure</h6>
+                    <p>{{booking.startDate | date}} <span class="green-label" *ngIf="departInDays > 0 && ! booking.cancelled">Depart in {{departInDays}} days</span></p>
+                  </div>
+                  <div class="col-md-5">
+                    <h6>Return</h6>
+                    <p>{{booking.endDate | date}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--booking-details-->
+          <div class="itinerary">
+            <div class="row">
+              <div class="col-md-5 push-md-7">
+                <!--id-verfication-->
+                <div class="id-verfication">
+      						<div class="row">
+      							<div class="col-sm-12">
+      								<div class="tour-inf">
+      									<div class="center-img">
+      										<img src="images/user.png" alt="" *ngIf="! supplier?.profile.image?.url" />
+                          <img src="{{supplier?.profile.image.url}}" alt="" *ngIf="!! supplier?.profile.image?.url" />
+      									</div>
+      									<h3>{{supplier.profile.supplier?.companyName}}
+      										<span *ngIf="supplier?.profile.supplier?.agentCertificate?.verified == true && supplier?.profile.supplier?.agentIdentity?.verified == true">
+      											<i class="fa fa-check-circle" aria-hidden="true"></i>
+      										</span>
+      										<span *ngIf="supplier?.profile.supplier?.agentCertificate?.verified == false && supplier?.profile.supplier?.agentIdentity?.verified == false">
+      											<i class="fa fa-times-close" aria-hidden="true"></i>
+      										</span>
+      									</h3>
+      									<p *ngIf="!! supplier?.profile?.address?.suburb || !! supplier?.profile?.address?.state || !! supplier?.profile?.address?.country"><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+      										{{supplier.profile.address?.suburb}},
+      										{{supplier.profile.address?.state}},
+      										{{supplier.profile.address?.country}}
+      									</p>
+      								</div>
+      								<ul>
+      									<li>
+      										<div class="row">
+      											<div class="col-sm-7 col-md-12 col-lg-7">
+      												<div class="icn-wrap">
+      													<img src="images/book.png" alt="">
+      												</div>
+      												<div class="verfication-info">
+      													<p>Agent Certificate</p>
+      													<h5>{{supplier.profile.supplier.agentCertificate?.name}}</h5>
+      												</div>
+      											</div>
+      											<div class="col-sm-5 col-md-12 col-lg-5">
+      												<button type="button" class="btn green-btn" *ngIf="supplier.profile.supplier?.agentCertificate?.verified"><span><i class="fa fa-check" aria-hidden="true"></i></span> Verified</button>
+      												<button type="button" class="btn" *ngIf="!supplier.profile.supplier?.agentCertificate?.verified"><span><i class="fa fa-close" aria-hidden="true"></i></span> Pending</button>
+      											</div>
+      										</div>
+      									</li>
+      									<li>
+      										<div class="row">
+      											<div class="col-sm-7 col-md-12 col-lg-7">
+      												<div class="icn-wrap">
+      													<img src="images/manger.png" alt="">
+      												</div>
+      												<div class="verfication-info">
+      													<p>Manager</p>
+      													<h5>{{supplier.profile.supplier?.ownerName}}</h5>
+      												</div>
+      											</div>
+      											<div class="col-sm-5 col-md-12 col-lg-5">
+      												<button type="button" class="btn green-btn" *ngIf="supplier.profile.supplier?.agentIdentity?.verified"><span><i class="fa fa-check" aria-hidden="true"></i></span> Verified</button>
+      												<button type="button" class="btn" *ngIf="!supplier.profile.supplier?.agentIdentity?.verified"><span><i class="fa fa-close" aria-hidden="true"></i></span> Pending</button>
+      											</div>
+      										</div>
+      									</li>
+      								</ul>
+      								<div class="tour-ratings">
+      									<div class="left">
+      										<h4>{{supplier.profile.numOfTours}}</h4>
+      										<p>Tours</p>
+      									</div>
+      									<div class="right">
+                          <h4 *ngIf="! supplier.profile.avgRating">N.A.</h4>
+      										<h4 *ngIf="supplier.profile.avgRating > 0">{{supplier.profile.avgRating}}</h4>
+      										<p>Ratings</p>
+      									</div>
+      								</div>
+      							</div>
+
+      							<div class="col-sm-12">
+      								<div class="btn-wrap">
+      									<button type="button" class="btn green-btn" data-toggle="modal" data-target="#askquestion"><span><img src="images/comment.png" alt="" /></span>Ask a question </button>
+      								</div>
+      							</div>
+      						</div>
+      					</div>
+                <!--id-verfication-->
+                <!--customer-support-->
+                <div class="customer-support">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h3>Customer Support</h3>
+                      <p>Atorvia always provide the best experience for you during your trip. Call our support hotline whenever you need us, 24/7.</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-7">
+                      <div class="contact-info">
+                        <h4>Business Hour</h4>
+                        <p>Monday to Friday 9am-5pm</p>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div class="contact-detail">
+                        <p>(07) 0000 0000</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-7">
+                      <div class="contact-info">
+                        <h4>Other</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div class="contact-detail">
+                        <p>(07) 0000 0001</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-7">
+                      <div class="contact-info">
+                        <h4>International</h4>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div class="contact-detail">
+                        <p>+61 7 0000 0001</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade askquestion" id="askquestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <ask-question [supplierId]="booking.tour.supplierId"></ask-question>
+                  </div>
+                </div>
+                <!--customer-support-->
+              </div>
+              <div class="col-md-7 pull-md-5">
+                <div class="right-wrap">
+                  <div class="list-section">
+                    <ul>
+                      <li [ngClass]="{'active': activeTab=='overview'}"><a (click)="activeTab='overview'; detectChanges();" href="javascript:void(0)"><span>Overview</span><span class="icon-wrap"><i class="fa fa-eye" aria-hidden="true"></i></span></a></li>
+                      <li [ngClass]="{'active': activeTab=='itinerary'}"><a (click)="activeTab='itinerary'; detectChanges();" href="javascript:void(0)"><span>Itinerary</span><span class="icon-wrap"><i class="fa fa-eye" aria-hidden="true"></i></span></a></li>
+                      <li [ngClass]="{'active': activeTab=='gallery'}"><a (click)="activeTab='gallery'; detectChanges();" href="javascript:void(0)"><span>Gallary</span><span class="icon-wrap"><i class="fa fa-picture-o" aria-hidden="true"></i></span></a></li>
+                      <li [ngClass]="{'active': activeTab=='inclusion'}"><a (click)="activeTab='inclusion'; detectChanges();" href="javascript:void(0)"><span>Inclusion</span><span class="icon-wrap"><i class="fa fa-eye" aria-hidden="true"></i></span></a></li>
+                    </ul>
+                  </div>
+
+                  <!--overview-->
+        					<div class="tour-detail" id="overview" [hidden]="activeTab != 'overview'">
+        						<h3>Overview</h3>
+        						<ul>
+        							<li>
+        								<p>Pace</p>
+        								<h5>{{tour.tourPace}}</h5>
+        							</li>
+        							<li>
+        								<p>Type</p>
+        								<h5>{{tour.tourType}}</h5>
+        							</li>
+        							<li>
+        								<p>Total Meals</p>
+        								<h5>{{tour.totalMeals}}</h5>
+        							</li>
+        							<li>
+        								<p>TourGuide</p>
+        								<h5 *ngIf="tour.hasGuide">Included</h5>
+        								<h5 *ngIf="!tour.hasGuide">Not Included</h5>
+        							</li>
+        						</ul>
+        						<p [innerHTML]="tour.description | nl2br">
+        						</p>
+        					</div>
+        					<!--overview-->
+
+                  <!--tour-itinerary-->
+                  <div class="tour-itinerary" [hidden]="activeTab != 'itinerary'">
+                    <div class="day-box">
+                      <div class="day-wrap" [ngClass]="{'small-icon': i>0, 'green-icon': i==0, 'show-less': i>=2 && !tour.showFullItenerary}" *ngFor="let itenerary of tour.itenerary; let i = index;">
+    										<h2>Day <span [innerHTML]="i+1"></span> : {{itenerary.title}}</h2>
+    										<p [innerHTML]="itenerary.description | nl2br"></p>
+    										<div [ngClass]="{'show-less': !itenerary.showMore}">
+    											<div class="sub-head">
+    												<h4>Hotel</h4>
+    												<p *ngIf="!! itenerary.hotelName">{{itenerary.hotelName}}</p>
+                            <p *ngIf="! itenerary.hotelName && !! itenerary.hotelType">{{itenerary.hotelType}}</p>
+                            <p *ngIf="! itenerary.hotelName && ! itenerary.hotelType">0 Nights</p>
+    											</div>
+    											<div class="sub-head">
+    												<h4>Meals</h4>
+    												<p>
+    													<span class="radio-wrap">
+                                <img src="images/imgpsh_fullsize.png" alt="" *ngIf="!itenerary.hasBreakfast">
+                                <img src="images/imgpsh_fullsize(2).png" alt="" *ngIf="itenerary.hasBreakfast">
+                                <label for="breakFast" class="radio-custom-label">Breakfast</label>
+                              </span>
+                              <span class="radio-wrap">
+                                <img src="images/imgpsh_fullsize.png" alt="" *ngIf="!itenerary.hasLunch">
+                                <img src="images/imgpsh_fullsize(2).png" alt="" *ngIf="itenerary.hasLunch">
+                                <label for="lunch" class="radio-custom-label">Lunch</label>
+                              </span>
+                              <span class="radio-wrap">
+                                <img src="images/imgpsh_fullsize.png" alt="" *ngIf="!itenerary.hasDinner">
+                                <img src="images/imgpsh_fullsize(2).png" alt="" *ngIf="itenerary.hasDinner">
+                                <label for="dinner" class="radio-custom-label">Dinner</label>
+                              </span>
+    												</p>
+    											</div>
+    										</div>
+    										<a href="javascript:void(0)" class="showmore" (click)="itenerary.showMore = !itenerary.showMore; detectChanges();">
+    											<span *ngIf="!itenerary.showMore">Show more</span>
+    											<span *ngIf="itenerary.showMore">Show less</span>
+    											<span>
+    												<i class="fa fa-angle-down" [ngClass]="{'fa-angle-down': !itenerary.showMore, 'fa-angle-up': itenerary.showMore}" aria-hidden="true"></i>
+    											</span>
+    										</a>
+    									</div>
+                    </div>
+                    <div class="text-center" *ngIf="tour.itenerary.length > 2">
+    									<a href="javascript:void(0)" class="full-itinerary" (click)="tour.showFullItenerary = !tour.showFullItenerary; detectChanges();">View full itinerary<span>
+    										<i class="fa fa-angle-down" aria-hidden="true" *ngIf="!tour.showFullItenerary"></i>
+    										<i class="fa fa-angle-up" aria-hidden="true" *ngIf="tour.showFullItenerary"></i>
+    										</span>
+    									</a>
+    								</div>
+                  </div>
+                  <!--tour-itinerary-->
+
+                  <!--gallery-wrap-->
+        					<div class="gallery-wrap" id="gallery" [hidden]="activeTab != 'gallery'">
+        						<div class="row">
+        							<div class="col-sm-12">
+        								<h3>Gallery</h3>
+        							</div>
+        							<div class="col-sm-12 second-row">
+                        <div class="img-wrap" *ngFor="let image of tour.images;">
+                          <a target="_blank" href="{{image.url}}" rel="prettyPhoto[tour_gallery]"><img src="uploads/images/{{image.id}}-220-220.jpg" alt="{{image.name}}" /></a>
+                        </div>
+                      </div>
+        						</div>
+        					</div>
+                  <!--gallery-wrap-->
+
+        					<!--inclusive-policy-->
+        					<div class="inclusive-policy" id="inclusion" [hidden]="activeTab != 'inclusion'">
+        						<div class="">
+        							<div class="col-sm-12">
+        								<h3>Inclusion &amp; Policy</h3>
+        								<h4>Included:</h4>
+        								<ul>
+        									<li *ngFor="let text of tour.inclusions;">{{text}}</li>
+        								</ul>
+        								<h4>Excluded:</h4>
+        								<ul>
+        									<li *ngFor="let text of tour.exclusions">{{text}}</li>
+        								</ul>
+
+        							</div>
+        						</div>
+        					</div>
+        					<!--inclusive-policy-->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,83 @@
+.slider {
+    height: 100%;
+
+    &__outer {
+        @extend .parent;
+    }
+
+    &__inner {
+        @extend .child;
+    }
+
+    &__content {
+        padding-top: 180px;
+        @include grid-column();
+
+        @include grid-media( $small-mobile ) {
+            
+        }
+
+        @include grid-media( $large-mobile ) {
+            padding-top: 200px;
+        }
+
+        @include grid-media( $tablet ) {
+            padding-top: 320px;
+            @include grid-column(10);
+            @include grid-push(1);
+        }
+
+        @include grid-media( $laptop ) {
+            padding-top: 200px;
+            @include grid-column(6);
+            @include grid-push(0);
+        }
+    }
+
+    &__heading {
+        margin-bottom: 0;
+        
+        text-shadow: 0 1px 10px rgba(black, 0.1);
+        font-size: $font-size-beta;
+        color: white;
+
+        @include grid-media( $tablet ) {
+            font-size: $font-size-alpha;
+        }
+    }
+
+    &__subheading {
+        margin-top: 10px;
+
+        text-shadow: 0 1px 10px rgba(black, 0.1);
+        
+        font-weight: $base-font-weight;
+        color: white;
+    }
+
+    &__item {
+        height: 100%;
+
+        &--one {
+            background: url(../img/bg-slide-1-lg.jpg) center bottom/cover no-repeat;
+        }
+
+        &--two {
+            background: url(../img/bg-slide-2-lg.jpg) center center/cover no-repeat;
+        }
+    }
+}
+
+.card-slider {
+    padding: 0 20px;
+
+    @include grid-media( $tablet ) {
+        padding: 0;
+    }
+}
+
+// Override Slick Styles
+.slick-list,
+.slick-track {
+    height: 100%;
+}

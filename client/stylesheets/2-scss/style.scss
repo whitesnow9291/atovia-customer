@@ -1,0 +1,140 @@
+/* --------------------------------------------------------
+Atorvia Stylesheets
+
+Version: 0.1
+Date Created: 29/05/2017
+Author: Atorvia
+Email: support@atorvia.com
+Website: http://atorvia.com
+----------------------------------------------------------*/
+
+// Settings: Global Variables & Color Palatte
+@import
+    'settings/palette',
+    'settings/variables';
+
+// Vendors: Third-party Plugins Styles
+@import
+    'vendors/normalize/normalize',      // Normailze CSS
+    'vendors/bourbon/bourbon',          // Bourbon SASS Mixins Library
+    'vendors/neat/neat',                // Neat SASS Grid
+    'vendors/slick';                    // Slick Carousel Plugin
+    // 'vendors/slick-theme';              // Slick Carousel Theme
+
+// Tools: Helpers, Mixins & Functions
+@import
+    'tools/helpers/helper';
+
+// Base: General HTML Elements & Typography
+@import
+    'base/base',
+    'base/typography';
+
+// Partials: Main Components Styles
+@import
+    'partials/button',
+    'partials/footer',
+    'partials/form',
+    'partials/header',
+    'partials/layout',
+    'partials/list',
+    'partials/navigation',
+    'partials/sidebar',
+    'partials/tag';
+
+// Components: Smaller Modules Styles
+@import 
+    'components/auth-form',
+    'components/auth',
+    'components/avatar',
+    'components/banner',
+    'components/content',
+    'components/copyright',
+    'components/cta',
+    'components/destination',
+    'components/feature-block',
+    'components/feature-card',
+    'components/filter',
+    'components/flow',
+    'components/hero',
+    'components/info',
+    'components/interest-card',
+    'components/interest-layout',
+    'components/legal-layout',
+    'components/logo',
+    'components/metadata',
+    'components/newsletter',
+    'components/offcanvas',
+    'components/price',
+    'components/rating',
+    'components/search-form',
+    'components/slick-custom',
+    'components/slider',
+    'components/social',
+    'components/tour-card';
+
+// Pages: Page-specific Styles
+
+// Shame: Designed for developers to do urgent quick fixes
+@import 'shame';
+
+body,
+html
+{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body {
+	position: relative;
+}
+
+@import 'modules/color';
+
+@import 'modules/align';
+
+@import 'modules/font';
+
+@import 'modules/mixins';
+
+@import 'modules/size';
+
+@import 'modules/reset';
+
+// @import 'partials-old/login';
+
+// @import 'partials-old/signup';
+
+// @import 'partials-old/forgot';
+
+// @import 'partials-old/resetPass';
+
+@import 'partials-old/userHeader';
+
+@import 'partials-old/profile';
+
+// @import 'partials-old/index';
+
+// @import 'partials-old/footer';
+
+@import 'partials-old/search';
+
+@import 'partials-old/header';
+
+@import 'partials-old/overview';
+
+@import 'partials-old/destinations';
+
+@import 'partials-old/payment';
+
+@import 'partials-old/confirmation';
+
+@import 'partials-old/Supplier/Tour/step1';
+
+@import 'partials-old/bookings-list';
+
+@import 'partials-old/booking-view-1';
+
+@import 'partials-old/booking-view-2';
+

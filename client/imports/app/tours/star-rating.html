@@ -1,0 +1,16 @@
+<span class="stars">
+  <!-- <i class="fa" aria-hidden="true" [ngClass]="[rating > 0 ? 'fa-star': 'fa-star-o']"></i> -->
+  <i class="fa" aria-hidden="true" [ngClass]="[ratingNum <=0.5 ? 'fa-star-half-o': 'fa-star-o']" [hidden]="ratingNum != 0.5"></i>
+  <i class="fa" aria-hidden="true" [ngClass]="[ratingNum >=1 ? 'fa-star': 'fa-star-o']" [hidden]="ratingNum == 0.5"></i>
+  <i class="fa" aria-hidden="true" [ngClass]="[ratingNum <=1.5 ? 'fa-star-half-o': 'fa-star-o']" [hidden]="ratingNum != 1.5"></i>
+  <i class="fa" aria-hidden="true" [ngClass]="[ratingNum >1.5 ? 'fa-star': 'fa-star-o']" [hidden]="ratingNum == 1.5"></i>
+  <i class="fa" aria-hidden="true" [ngClass]="[ratingNum <=2.5 ? 'fa-star-half-o': 'fa-star-o']" [hidden]="ratingNum != 2.5"></i>
+  <i class="fa" aria-hidden="true" [ngClass]="[ratingNum >2.5 ? 'fa-star': 'fa-star-o']" [hidden]="ratingNum == 2.5"></i>
+  <i class="fa" aria-hidden="true" [ngClass]="[ratingNum <=3.5 ? 'fa-star-half-o': 'fa-star-o']" [hidden]="ratingNum != 3.5"></i>
+  <i class="fa" aria-hidden="true" [ngClass]="[ratingNum >3.5 ? 'fa-star': 'fa-star-o']" [hidden]="ratingNum == 3.5"></i>
+  <i class="fa" aria-hidden="true" [ngClass]="[ratingNum <=4.5 ? 'fa-star-half-o': 'fa-star-o']" [hidden]="ratingNum != 4.5"></i>
+  <i class="fa" aria-hidden="true" [ngClass]="[ratingNum >=5 ? 'fa-star': 'fa-star-o']" [hidden]="ratingNum == 4.5"></i>
+</span>
+<span class="ratingNum">
+  {{ratingNum}}
+</span>

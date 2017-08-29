@@ -1,0 +1,17 @@
+.signup-wrap .side-images {
+	@include cover-background('/images/sign-up.png', 100%, 100%);
+}
+
+.signup-option {
+	font-size : $font-16;
+	color : $label-color;
+	a {
+		color : $green-anchor;
+	}
+}
+
+.signup-wrap {
+	#FirstName, #LastName {
+		text-transform: capitalize;
+	}
+}

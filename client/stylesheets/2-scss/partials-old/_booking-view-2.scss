@@ -1,0 +1,222 @@
+.booking2 {
+	overflow: hidden;
+	.side-btn {
+		@media (max-width: $ipad) {
+			text-align: center !important;
+			margin-top: 10px ;
+    }
+		button {
+			@media (max-width: $medium-phone) {
+				width: 100%;
+				float: none;
+      }
+    }
+
+		.grey-btn {
+			margin-right: 30px;
+			@media (max-width: $medium-phone) {
+				margin-right: 30px;
+				margin-bottom: 15px;
+      }
+    }
+  }
+	.green-anchor {
+		margin-top: 11px;
+		@extend .block;
+  }
+	.itinerary {
+		@extend .pull_left;
+		width: $full;
+		margin-top: 28px;
+
+		.day-box {
+			@media (max-width: $medium-phone) {
+				margin-left: 24px !important;
+				padding-left: 35px!important;
+				.show-less {
+					display: none;
+        }
+      }
+    }
+		.id-verfication {
+			margin-bottom: 28px;
+			@include border-all(1px, solid, $border-color);
+			background: $white;
+
+			.tour-inf {
+				padding: 35px 25px;
+				@include border-bottom(1px, solid, $border-color);
+				@extend .text-center;
+				.center-img {
+					width: 100px;
+					height: 100px;
+					background: $grey6;
+					@include border-radius($full, $full, $full, $full);
+					margin: 0 auto;
+					float: none;
+					img{
+						height: $full;
+						width: $full;
+						@include border-radius($full, $full, $full, $full);
+					}
+        }
+				h3 {
+					font-size: $font-18;
+					color: $label-color;
+					margin: 20px auto;
+					span {
+						margin-left: 5px;
+						i {
+							color: $green-color;
+            }
+          }
+        }
+				p {
+					font-size: $font-16;
+					color: $label-color;
+					margin: 0;
+					span {
+						margin-right: 5px;
+						i {
+							color: $green-color;
+            }
+          }
+        }
+      }
+			ul {
+				li {
+					padding: 14px 22px;
+					@include border-bottom(1px, solid, $border-color);
+					.icn-wrap,
+					.verfication-info {
+						@extend .vertical-middle;
+						@extend .inline-block;
+						@media (max-width: $laptop) {
+							margin-bottom: 10px;
+            }
+          }
+					.icn-wrap {
+						margin-right: 5px;
+          }
+					.verfication-info {
+						p {
+							color: $grey-anchor;
+							font-size: $font-16;
+							margin: 0;
+            }
+						h5 {
+							color: $label-color;
+							font-size: $font-20;
+							font-weight: $weight_700;
+							width: 130px;
+							white-space: nowrap;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							@media (max-width: $desktop) {
+								width: 90px;
+              }
+							@media (max-width: $ipad) {
+								width: 100%;
+              }
+            }
+          }
+					.green-btn {
+						width: auto;
+						padding: 8px 9px;
+						@media (max-width: $laptop) {
+							margin: 0 auto;
+							float: none;
+							display: block;
+            }
+
+						span {
+							margin-right: 3px;
+            }
+          }
+        }
+      }
+			.tour-ratings {
+				padding: 20px;
+				width: $full;
+				@extend .pull_left;
+				border-top: 1px solid $border-color;
+				.left,
+				.right {
+					width: 50%;
+					@extend .pull_left;
+					@extend .text-center;
+					padding: 10px 0;
+					h4 {
+						font-size: $font-24;
+						color: $label-color;
+						margin-bottom: 5px;
+          }
+					p {
+						font-size: $font-14;
+						color: $grey-anchor;
+						margin: 0px;
+          }
+        }
+				.left {
+					border-right: 1px solid  $border-color;
+        }
+      }
+			.btn-wrap {
+				padding: 20px 35px;
+				border-top: 1px solid  $border-color;
+				.green-btn {
+					margin: 0 auto;
+					float: none;
+					width: $full;
+					span {
+						margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+	.right-wrap {
+		padding: 0 0 30px!important;
+		.list-section {
+			@extend .relative;
+			height: 50px;
+			@include border-bottom(1px, solid, $border-color);
+			margin-bottom: 50px;
+			ul {
+				@extend .text-center;
+				width: $full;
+				@extend .absolute;
+				@extend .left-0;
+				@extend .right-0;
+				@extend .bottom-0;
+				li {
+					@extend .inline-block;
+					@extend .pull_left;
+					width: 25%;
+					a {
+						padding: 10px 20px;
+						@extend .inline-block;
+						.icon-wrap {
+							display: none;
+            }
+						span {
+							@media (max-width: $medium-phone) {
+								display: none;
+              }
+            }
+						span.icon-wrap {
+							@media (max-width: $medium-phone) {
+								display: block;
+              }
+            }
+          }
+        }
+				li.active {
+					a {
+						border-bottom: 3px solid $green-color;
+          }
+        }
+      }
+    }
+  }
+}

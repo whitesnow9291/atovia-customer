@@ -1,0 +1,42 @@
+<html>
+<body>
+<h1>${booking.tour.name}</h1>
+<ul>
+<li>Booking ID: ${booking.uniqueId}</li>
+<li>Voucher ID: ${booking.voucherId}</li>
+<li>Supplier: ${booking.tour.supplier.companyName}</li>
+<li>Departure: ${booking.tour.departure}</li>
+<li>Destination: ${booking.tour.destination}</li>
+<li>Start Date: ${getFormattedDate(booking.startDate)} </li>
+<li>End Date: ${getFormattedDate(booking.endDate)} </li>
+<li>Num of Travellers: ${booking.numOfTravellers} </li>
+<li>Num of Adult: ${booking.numOfAdults} </li>
+<li>Num of Child: ${booking.numOfChild} </li>
+${booking.travellers.map( (item, index) => {
+  var retVal = `<ul>
+  <li><b>Traveller #${index+1}</b></li>
+  <li><label>Name</label>:${item.firstName} ${item.lastName}</li>
+  <li><label>Email</label>:${item.email}</li>
+  <li><label>Contact</label>:${item.contact}</li>`;
+if (typeof item.passport != "undefined") {
+  retVal += `<li><label>Passport Country</label>:${item.passport.country}</li>
+  <li><label>Passport Number</label>:${item.passport.number}</li>`;
+}
+if (index == 0) {
+  retVal += `<li><label>Street Address</label>:${item.addressLine1}</li>
+  <li><label>Suburb</label>:${item.suburb}</li>
+  <li><label>State</label>:${item.state}</li>
+  <li><label>Post Code</label>:${item.postCode}</li>
+  <li><label>Country</label>:${item.country}</li>`;
+}
+retVal += `</ul>`;
+return retVal;
+} )}
+<li>Total Price: ${booking.currencyCode} ${booking.totalPrice}</li>
+<li>Payment method: ${booking.paymentInfo.method}</li>
+<li> View Link: <a href="${process.env.ROOT_URL}/bookings/view/${booking._id}">${booking.tour.name}</a> </li>
+</ul>
+<p>Team Atorvia</p>
+
+</body>
+</html>

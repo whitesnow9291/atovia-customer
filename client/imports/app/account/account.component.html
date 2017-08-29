@@ -1,0 +1,39 @@
+<section *ngIf="user">
+    <!--Patient Detail Page-->
+    <h2>Users Details</h2>
+    <button class="btn pull-right" type="button" [routerLink]="['/changepassword']">Change Password</button>
+
+<section class="col s12 pt-detail bt-shadow">
+
+    <section class="detail-pic-pateint col s3">
+        <img src="images/no-image-male.jpg" alt="" style="width:100px;" />
+</section>
+        <section class="col s9 content-ptdetail ">
+            <h2>{{user.profile.firstName}} {{user.profile.lastName}}</h2>
+            <ul>
+                <li><i class="zmdi zmdi-link"></i><a href="javascript:void(0);">{{user.emails[0].address}}</a></li>
+                <li class="robotofont"><i class="zmdi zmdi-phone"></i>{{user.profile.contact}}</li>
+            </ul>
+         <div>
+             <section class="user-gendetail row col s12">
+               <ul>
+                   <li>
+                       <label>User Name</label>
+                       <span>{{user.profile.firstName}} {{user.profile.lastName}}</span>
+                   </li>
+                   <li>
+                       <label>Email Address</label>
+                       <span>{{user.emails[0].address}}</span>
+                   </li>
+                   <li>
+                       <label>Contact Number</label>
+                       <span>{{user.profile.contact}}</span>
+                   </li>
+
+            </ul>
+          </section>
+</div>
+          </section>
+
+      </section>
+    </section>

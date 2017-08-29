@@ -1,0 +1,25 @@
+.logo {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+
+    @include grid-media( $tablet ) {
+        margin: 4px 0;
+    }
+
+    @include grid-media( $laptop ) {
+        width: 200px;
+    }
+
+    &__image {
+        width: 100%;
+        
+        -webkit-filter: drop-shadow($base-box-shadow);
+        filter: drop-shadow($base-box-shadow);
+    }
+
+    // Modifiers
+    &--footer {
+        width: 250px;
+    }
+}

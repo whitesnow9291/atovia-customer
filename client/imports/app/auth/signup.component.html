@@ -1,0 +1,166 @@
+<!--<div class="login-wrap signup-wrap">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6 side-images">
+				<div class="table-wrapper">
+					<div class="center-content">
+						<h3 class="title-line">ATORVIA</h3>
+						<p>Mauris non tempor quam, et lacinia sapien. Mauris accumsan eros eget libero posuere vulputate. Etiam elit elit, elementum sed varius at, adipiscing vitae est.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="table-wrapper side-form">
+					<div class="center-content login-form">
+						<form [formGroup]="signupForm" #f="ngForm" (ngSubmit)="signup()" id="input-icon">
+							<div class="form-group">
+								<button type="button" class="facebook-login" (click)="fblogin()"><span><i class="fa fa-facebook-official" aria-hidden="true"></i></span>Sign up with Facebook</button>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-sm-6">
+										<label for="FirstName">First Name</label>
+										<div class="input-wrap">
+											<input type="text" class="form-control" id="FirstName" placeholder="First Name" formControlName="firstName"/>
+											<span><i class="fa fa-user" aria-hidden="true"></i></span>
+										</div>
+										<div class='form-text error has-error' *ngIf='signupForm.controls.firstName.errors && signupForm.controls.firstName.touched'>
+											<div [hidden]="!signupForm.controls['firstName'].errors.required">You have to fill in First Name to signup.</div>
+			                <div [hidden]="!signupForm.controls['firstName'].errors.minlength">Min 2 characters required.</div>
+			                <div [hidden]="!signupForm.controls['firstName'].errors.maxlength">Max 30 characters allowed.</div>
+			                <div [hidden]="!signupForm.controls['firstName'].errors.validateFirstName">Please type valid First Name.</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<label for="LastName">Last Name</label>
+										<div class="input-wrap">
+											<input type="text" class="form-control" id="LastName" placeholder="Last Name" formControlName="lastName"/>
+											<span><i class="fa fa-user" aria-hidden="true"></i></span>
+										</div>
+										<div class='form-text error has-error' *ngIf='signupForm.controls.lastName.errors && signupForm.controls.lastName.touched'>
+											<div [hidden]="!signupForm.controls['lastName'].errors.required">You have to fill in Last Name to signup.</div>
+			                <div [hidden]="!signupForm.controls['lastName'].errors.minlength">Min 2 characters required.</div>
+			                <div [hidden]="!signupForm.controls['lastName'].errors.maxlength">Max 30 characters allowed.</div>
+			                <div [hidden]="!signupForm.controls['lastName'].errors.validateFirstName">Please type valid Last Name.</div>
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+
+							<div class="form-group">
+								<label for="loginEmail">Email</label>
+								<div class="input-wrap">
+									<input type="email" class="form-control" id="loginEmail" placeholder="Email" formControlName="email"/>
+									<span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+								</div>
+								<div class="form-text error has-error" *ngIf="signupForm.controls.email.errors && signupForm.controls.email.touched">
+									<div [hidden]="!signupForm.controls['email'].errors.required">You have to fill in Email to signup.</div>
+									<div [hidden]="!signupForm.controls['email'].errors.minlength">Min 5 characters required.</div>
+									<div [hidden]="!signupForm.controls['email'].errors.maxlength">Max 50 characters allowed.</div>
+									<div [hidden]="!signupForm.controls['email'].errors.validateEmail">Invalid Email address.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="loginPassword">Password</label>
+								<div class="input-wrap">
+									<input type="password" class="form-control" id="loginPassword" placeholder="Password" minlength='6' formControlName="password"/>
+									<span><i class="fa fa-lock" aria-hidden="true"></i></span>
+								</div>
+								<div class='form-text error has-error' *ngIf="signupForm.controls.password.errors && signupForm.controls.password.touched">
+									<div [hidden]="!signupForm.controls['password'].errors.required">You have to fill in Password to signup.</div>
+									<div [hidden]="!signupForm.controls['password'].errors.minlength">Minimum 8 characters required.</div>
+									<div [hidden]="!signupForm.controls['password'].errors.maxlength">Maximum 30 characters allowed.</div>
+									<div [hidden]="!signupForm.controls['password'].errors.validatePassword">At least 1 Uppercase Alphabet, 1 Lowercase Alphabet, 1 Number and 1 Special Character required.</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn green-btn full-btn" [disabled]="!signupForm.valid">Sign Up</button>
+							</div>
+							<div class="form-group signup-option">
+								<p>By clicking ‘Sign Up’, you agree with our <a [routerLink]="['/page/view/terms']">Terms & Conditions</a>, <a [routerLink]="['/page/view/privacy']">Privacy Policy</a> and <a [routerLink]="['/page/view/disclaimer']">Disclaimer.</a></p>
+							</div>
+
+							<div class="form-group add-account">
+								<div class="row">
+									<div class="col-7">
+										<a href="javascript:void(0)">Already have an account?</a>
+									</div>
+									<div class="col-5 text-right">
+										<a [routerLink]="['/login']" class="green-text" >Login now</a>
+									</div>
+									</div>
+							</div>
+						</form>
+
+						<div [hidden]="error == ''">
+							<p class="md-warn" layout="row" layout-fill layout-padding layout-margin>
+								<p class="md-body-1">{{ error }}</p>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>-->
+
+<main class="auth-wrapper" role="main">
+	<!--Authentication Display Column-->
+	<div class="auth-display auth-display--signup">
+		<a [routerLink]="['/']" class="auth-display__logo">
+			<img src="img/logo-white.png" alt="">
+		</a>
+		<div class="auth-display__content">
+			<h2 class="auth-display__heading">Search over 1000 tours</h2>
+			<p class="auth-display__text">Atorvia handpicked over thousands of tours for your next vacation.</p>
+		</div>
+	</div>
+
+	<!--Authentication Content Column-->
+	<div class="auth-content">
+		<div class="auth-content__outer">
+			<div class="auth-content__inner">
+				<div class="auth-content__wrapper">
+					<h1 class="auth-content__heading">Sign up</h1>
+					<p class="auth-content__subheading">Start saving today by signing up an Atorvia account.</p>
+					<form class="auth-form" [formGroup]="signupForm" #f="ngForm" (ngSubmit)="signup()" >
+						<!--Sign Up Name Inputs-->
+						<div class="auth-form__row auth-form__row--collapse">
+							<!--First Name-->
+							<div class="auth-form__column">
+								<label for="userFirstname">First Name</label>
+								<input id="userFirstname" class="auth-form__input" type="text" placeholder="First Name" formControlName="firstName">
+								<i class="material-icons auth-form__icon">account_box</i>
+							</div>
+							<!--Last Name-->
+							<div class="auth-form__column">
+								<label for="userLastname">Last Name</label>
+								<input id="userLastname" class="auth-form__input" type="text" placeholder="Last Name" formControlName="lastName">
+								<i class="material-icons auth-form__icon">account_box</i>
+							</div>
+						</div>
+						<!--Sign Up Email Input-->
+						<div class="auth-form__row">
+							<label for="userEmail">Email</label>
+							<input id="userEmail" class="auth-form__input" type="email" placeholder="Email" formControlName="email">
+							<i class="material-icons auth-form__icon">mail</i>
+						</div>
+						<!--Sign Up Password Input-->
+						<div class="auth-form__row">
+							<label for="userPassword">Password</label>
+							<input id="userPassword" class="auth-form__input" type="password" placeholder="Password" minlength="6" formControlName="password">
+							<i class="material-icons auth-form__icon">lock</i>
+						</div>
+						<!--Sign Up Button-->
+						<div class="auth-form__row">
+							<button type="submit" class="button button--primary auth-form__button auth-form__button--login">Sign Up</button>
+						</div>
+						<p class="auth-form__cta">Already have an account? <a [routerLink]="['/login']" class="auth-form__link">Login now</a>.</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

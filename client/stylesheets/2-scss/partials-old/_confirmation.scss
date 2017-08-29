@@ -1,0 +1,166 @@
+.payment.confirmation {
+	.grey-bg {
+		.tour-header {
+			padding-bottom: 0;
+    }
+		.right-wrap .steps {
+			border: 0;
+			.thanks-box {
+				h4 {
+					font-size: $font-24;
+					font-weight: $weight_700;
+					color: $green-anchor;
+					margin-bottom: 10px;
+        }
+				p {
+					font-size: $font-18;
+					color: $grey-anchor;
+					margin-bottom: 25px;
+					@media (max-width: $small-grid) {
+						margin-bottom: 15px;
+          }
+					a {
+						color: $green-anchor;
+          }
+        }
+      }
+			.tag-img {
+				@media (max-width: $small-grid) {
+					text-align: center;
+					margin-bottom: 15px;
+        }
+      }
+    }
+		.second-wrap {
+			border-top: 1px solid $border-color;
+			padding: 25px 30px;
+			@extend .block;
+			width: $full;
+			h3 {
+				font-size: $font-20;
+				font-weight: $weight_700;
+				color: $label-color;
+				margin-bottom: 10px;
+      }
+			dl dd {
+				font-size: $font-16;
+				font-weight: $weight_700;
+				color: $grey-anchor;
+      }
+			dl dd:first-of-type {
+				color: $green-anchor;
+      }
+			dl dt {
+				font-size: $font-14;
+				font-weight: $weight_700;
+				color: $label-color;
+      }
+			.travel-detail {
+				@extend .pull_left;
+				width: $full;
+				@include border-all(1px, solid, $border-color);
+				background: $light-bg;
+
+				.tarvel-title {
+					padding: 30px;
+					.img-wrp {
+						height: 80px;
+						width: 80px;
+						@include border-radius(3px, 3px, 3px, 3px);
+						/*background: $grey-4;*/
+						@media (max-width: $laptop) {
+							margin: 0 auto;
+							float: none;
+            }
+          }
+					h5 {
+						font-size: $font-20;
+						font-weight: $weight_700;
+						color: $label-color;
+						margin: 15px 0 10px;
+						@media (max-width: $laptop) {
+							text-align: center;
+            }
+          }
+					p {
+						color: $grey-anchor;
+						font-size: $font-16;
+						@media (max-width: $laptop) {
+							text-align: center;
+            }
+						span {
+							color: $green-color;
+							margin-right: 5px;
+            }
+						span.stars {
+							margin-left: 10px;
+							vertical-align: bottom;
+							label.star {
+								cursor: default;
+							}
+						}
+          }
+        }
+				.travel-desc {
+					padding: 30px;
+					border-top: 1px solid $border-color;
+
+					.col-sm-4 {
+						margin-bottom: 25px;
+						@media (max-width: $laptop) {
+							text-align: center;
+            }
+						.col-lg-4 {
+							@media (max-width: $laptop) {
+								margin-bottom: 10px;
+								height: 40px;
+								display: table;
+              }
+            }
+						h5 {
+							color: $label-color;
+							font-size: $font-14;
+							font-weight: $weight_700;
+            }
+						p {
+							color: $grey-anchor;
+							font-size: $font-16;
+							margin-bottom: 0;
+            }
+          }
+        }
+      }
+			.important-info {
+				margin: 30px 0 0;
+				h3 {
+					font-size: $font-18;
+					font-weight: $weight_700;
+					color: $label-color;
+					margin-bottom: 30px;
+        }
+				ul {
+					margin-left: 36px;
+					li {
+						list-style: disc;
+						font-size: $font-16;
+						margin-bottom: 10px;
+						color: $grey-anchor;
+          }
+        }
+      }
+			.signup-option {
+				margin-top: 10px;
+				p {
+					margin-bottom: 0;
+        }
+				.green-btn {
+					padding: 15px 25px;
+					width: auto;
+					@media (max-width: $laptop) {
+						margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+}

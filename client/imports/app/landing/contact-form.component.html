@@ -1,0 +1,86 @@
+<main class="">
+  <navbar></navbar>
+	<section class="banner banner--contact">
+		<div class="container">
+			<div class="banner__content">
+				<h1 class="banner__heading">Contact Us</h1>
+				<p class="banner__text">Atorvia is always with you. You can submit a ticket or email <a href="mailto:support@atorvia.com">support@atorvia.com</a></p>
+			</div>
+		</div>
+	</section>
+
+  <div class="col-md-6">
+  <div class="table-wrapper side-form">
+    <div class="center-content login-form">
+      <form [formGroup]="contactForm" #f="ngForm" id="input-icon">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="FullName">Full Name</label>
+              <div class="input-wrap">
+                <input type="text" class="form-control" id="FullName" placeholder="Your Full Name" formControlName="fullName"/>
+                <span><i class="fa fa-user" aria-hidden="true"></i></span>
+              </div>
+              <div class='form-text error has-error' *ngIf='contactForm.controls.fullName.errors && contactForm.controls.fullName.touched'>
+                <div [hidden]="!contactForm.controls['fullName'].errors.required">You have to fill in Full Name to proceed.</div>
+                <div [hidden]="!contactForm.controls['fullName'].errors.minlength">Min 2 characters required.</div>
+                <div [hidden]="!contactForm.controls['fullName'].errors.maxlength">Max 30 characters allowed.</div>
+                <div [hidden]="!contactForm.controls['fullName'].errors.validateFirstName">Please type valid First Name.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <div class="input-wrap">
+            <input type="email" class="form-control" id="loginEmail" placeholder="Email" formControlName="email"/>
+            <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+          </div>
+          <div class="form-text error has-error" *ngIf="contactForm.controls.email.errors && contactForm.controls.email.touched">
+            <div [hidden]="!contactForm.controls['email'].errors.required">You have to fill in Email to proceed.</div>
+            <div [hidden]="!contactForm.controls['email'].errors.minlength">Min 5 characters required.</div>
+            <div [hidden]="!contactForm.controls['email'].errors.maxlength">Max 50 characters allowed.</div>
+            <div [hidden]="!contactForm.controls['email'].errors.validateEmail">Invalid Email address.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-12">
+              <label for="Message">Message</label>
+              <div class="input-wrap">
+                <textarea class="form-control" id="Message" placeholder="Type Your Message Here" formControlName="message"></textarea>
+              </div>
+              <div class='form-text error has-error' *ngIf='contactForm.controls.message.errors && contactForm.controls.message.touched'>
+                <div [hidden]="!contactForm.controls['message'].errors.required">You have to fill in Message to proceed.</div>
+                <div [hidden]="!contactForm.controls['message'].errors.minlength">Min 10 characters required.</div>
+                <div [hidden]="!contactForm.controls['message'].errors.maxlength">Max 300 characters allowed.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label for="phnNumber">Contact</label>
+								<div class="input-wrap">
+									<input type="text" class="form-control" formControlName="phoneNum"/>
+								</div>
+							</div>
+							<div class='form-text error has-error' *ngIf="contactForm.controls.phoneNum.touched">
+								<div *ngIf="contactForm.controls.phoneNum.hasError('maxlength')">Max 15 characters allowed.</div>
+								<div *ngIf="contactForm.controls.phoneNum.hasError('validatePhoneNum')">Invalid Phone Number.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+        <div class="form-group">
+          <button type="button" class="btn green-btn full-btn" [disabled]="!contactForm.valid" (click)="sendQuery()">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <app-footer></app-footer>
+</main>

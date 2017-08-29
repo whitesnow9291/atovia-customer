@@ -1,0 +1,36 @@
+.list {
+    $root: &; // Setup parent as variable
+
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    &__item {
+        margin-top: 15px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &__link {
+        font-weight: $base-font-weight;
+        font-size: $font-size-sd;
+        color: $brand-support-primary;
+    }
+
+    // Modifiers
+    &--inline {
+        @include clearfix;
+
+        #{$root}__item {
+            float: left;
+            margin-top: 0;
+            margin-left: 20px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+}

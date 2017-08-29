@@ -1,0 +1,17 @@
+.copyright {
+    margin-top: 40px;
+    padding: 40px 0;
+
+    @include clearfix();
+
+    @include grid-media( $tablet ) {
+        margin-top: 150px;
+    }
+
+    &__text {
+        margin-bottom: 0;
+        font-size: $font-size-sd;
+        
+        @include grid-column;
+    }
+}

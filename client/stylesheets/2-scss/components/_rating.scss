@@ -1,0 +1,38 @@
+.rating {
+    @include clearfix();
+
+    &__star {
+        float: left;
+
+        font-size: $font-size-sd;
+    }
+
+    &__icon {
+        float: left;
+        position: relative;
+        top: 2px;
+
+        font-size: $base-font-size;
+        color: $brand-color;
+
+        &--active {
+            color: $brand-color;
+        }
+    }
+
+
+    &__count {
+        float: left;
+        margin: 0 0 0 5px;
+        padding: 3px 5px;
+
+        background: $brand-color;
+        border-radius: $base-border-radius;
+
+        text-align: right;
+        font-weight: $button-font-weight;
+        font-size: $font-size-sd;
+        line-height: 1;
+        color: white;
+    }
+}

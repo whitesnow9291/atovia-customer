@@ -1,0 +1,196 @@
+<header-main *ngIf="!!user"></header-main>
+<div class="user-head" *ngIf="!!user">
+  <div class="container">
+    <div class="row justify-content-sm-center">
+      <div class="col-sm-10">
+        <div class="profile">
+          <div class="img-wrap">
+            <span class="user-img">
+              <img src="images/user.png" alt="" *ngIf="! user?.profile.image?.url" />
+              <img src="uploads/images/{{user?.profile.image.id}}-102-102.jpg" alt="" *ngIf="!! user?.profile.image?.url" />
+            </span>
+            <div class="image-input">
+              <span class="update-img">
+                <i class="fa fa-pencil" aria-hidden="true" (click)="fileInput2.click();"></i>
+              </span>
+              <input #fileInput2 type="file" (change)="onFileSelect($event)" id="inputFile" accept="image/* " style="line-height: initial;">
+            </div>
+          </div>
+          <div class="user-deatil">
+            <h4>{{user.profile.fullName}}</h4>
+            <p>Member since {{user.createdAt | date}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="grey-bg">
+  <div class="container">
+    <div class="row justify-content-sm-center">
+      <div class="col-xl-10">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="right-wrap">
+              <div class="update-detail">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h3>Personal Details</h3>
+                    <p>Tell us more about</p>
+                  </div>
+                </div>
+              </div>
+              <div class="detail-form">
+                <form [formGroup]="accountForm" #f="ngForm" (ngSubmit)="update()">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label for="firstName">FIRST NAME</label>
+                        <div class="input-wrap">
+                          <input type="text" class="form-control" id="firstName" formControlName="firstName"/>
+                        </div>
+                      </div>
+                      <div class='form-text error has-error' *ngIf="accountForm.controls.firstName.touched">
+                        <div *ngIf="accountForm.controls.firstName.hasError('required')">You have to fill in First Name to proceed.</div>
+                        <div *ngIf="accountForm.controls.firstName.hasError('minlength')">Min 2 characters required.</div>
+                        <div *ngIf="accountForm.controls.firstName.hasError('maxlength')">Max 30 characters required.</div>
+                        <div *ngIf="accountForm.controls.firstName.hasError('validateFirstName')">Please type valid First Name.</div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label for="middleName">MIDDLE NAME</label>
+                        <div class="input-wrap">
+                          <input type="text" class="form-control" id="middleName" formControlName="middleName"/>
+                        </div>
+                      </div>
+                      <div class='form-text error has-error' *ngIf="accountForm.controls.middleName.touched">
+                        <div *ngIf="accountForm.controls.middleName.hasError('minlength')">Min 2 characters required.</div>
+                        <div *ngIf="accountForm.controls.middleName.hasError('maxlength')">Max 30 characters required.</div>
+                        <div *ngIf="accountForm.controls.middleName.hasError('validateFirstName')">Please type valid Middle Name.</div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label for="lastName">LAST NAME</label>
+                        <div class="input-wrap">
+                          <input type="text" class="form-control" id="lastName" formControlName="lastName"/>
+                        </div>
+                      </div>
+                      <div class='form-text error has-error' *ngIf="accountForm.controls.lastName.errors && accountForm.controls.lastName.touched">
+                        <div *ngIf="accountForm.controls.lastName.hasError('required')">You have to fill in Last Name to proceed.</div>
+                        <div *ngIf="accountForm.controls.lastName.hasError('minlength')">Min 2 characters required.</div>
+                        <div *ngIf="accountForm.controls.lastName.hasError('maxlength')">Max 30 characters required.</div>
+                        <div *ngIf="accountForm.controls.lastName.hasError('validateFirstName')">Please type valid Last Name.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="loginEmail">EMAIL</label>
+                        <div class="input-wrap">
+                          <input type="email" class="form-control" formControlName="email"/>
+                        </div>
+                      </div>
+                      <div class='form-text error has-error' *ngIf="accountForm.controls.email.errors && accountForm.controls.email.touched">
+                        <div *ngIf="accountForm.controls.email.hasError('required')">You have to fill in Email to proceed.</div>
+                        <div *ngIf="accountForm.controls.email.hasError('minlength')">Min 5 characters required.</div>
+                        <div *ngIf="accountForm.controls.email.hasError('maxlength')">Max 50 characters required.</div>
+                        <div *ngIf="accountForm.controls.email.hasError('email')">Invalid email address.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="phnNumber">PHONE NUMBER</label>
+                        <div class="input-wrap">
+                          <input type="text" class="form-control" id="phoneNum" formControlName="phoneNum"/>
+                        </div>
+                      </div>
+                      <div class='form-text error has-error' *ngIf="accountForm.controls.phoneNum.touched">
+                        <div *ngIf="accountForm.controls.phoneNum.hasError('minlength')">Min 7 characters required.</div>
+                        <div *ngIf="accountForm.controls.phoneNum.hasError('maxlength')">Max 15 characters allowed.</div>
+                        <div *ngIf="accountForm.controls.phoneNum.hasError('validatePhoneNum')">Invalid Phone Number.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="text-right">
+                        <button type="submit" class="btn green-btn">Update</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+                <div [hidden]="error == ''">
+    							<p class="md-warn" layout="row" layout-fill layout-padding layout-margin>
+    								<p class="md-body-1 has-error">{{ error?.reason }}</p>
+    							</p>
+    						</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="customer-support">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h3>Customer Support</h3>
+                  <p>Atorvia always provide the best experience for you during your trip. Call our support hotline whenever you need us, 24/7.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-7">
+                  <div class="contact-info">
+                    <h4>Business Hour</h4>
+                    <p>Monday to Friday 9am-5pm</p>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="contact-detail">
+                    <p>(07) 0000 0000</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-7">
+                  <div class="contact-info">
+                    <h4>Other</h4>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="contact-detail">
+                    <p>(07) 0000 0001</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-7">
+                  <div class="contact-info">
+                    <h4>International</h4>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div class="contact-detail">
+                    <p>+61 7 0000 0001</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="give-feedback">
+              <div class="table">
+                <div class="table-cell">
+                  <h3>Tell us what you think about us</h3>
+                  <p>Your feedback is really important for us to keep improving out platform in order to bring the best tour experience to you.</p>
+                  <button type="button" class="btn green-btn">Leave us a feedback</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

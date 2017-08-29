@@ -1,0 +1,27 @@
+.search.details {
+	.search-box {
+		padding: 125px 0 120px;
+		h1 {
+			@extend .relative;
+			&:after {
+				@extend .absolute;
+				height: 4px;
+				width: 100px;
+				left: 0;
+				right: 0;
+				float: none;
+				margin: 0 auto;
+				bottom: -32px;
+				background: $green-color;
+				content: '';
+      }
+    }
+		p {
+			margin-top: 28px;
+			@extend .pull_left;
+			width: $full;
+			$font-size: $font-24;
+			font-weight: $weight_700;
+    }
+  }
+}

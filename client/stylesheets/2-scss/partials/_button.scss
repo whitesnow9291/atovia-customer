@@ -1,0 +1,77 @@
+button, .button {
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.button {
+    $root: &;
+    display: inline-block;
+    padding: 10px 20px;
+
+    background: $grey-color-light;
+    border: 0;
+    border-radius: $base-border-radius;
+
+    font-weight: $button-font-weight;
+    font-size: $base-font-size;
+    text-align: center;
+    color: white;
+
+    @include transition(all 0.15s ease-in-out);
+
+    &:hover {
+        box-shadow: $button-box-shadow;
+        cursor: pointer;
+
+        #{$root}__icon {
+            @include transform(translateX(10px));
+        }
+    }
+
+    &__icon {
+        margin-top: -3px;
+
+        font-size: $font-size-epsilon;
+        vertical-align: middle;
+
+        @include transition(transform 0.2s ease-in-out);
+    }
+    
+    // Modifiers
+    // Primary Brand Buttons
+    &--primary {
+        background: $brand-color;
+
+        &:hover {
+            background: $brand-hover;
+        }
+    }
+
+    // Facebook Buttons
+    &--facebook {
+        background: $facebook;
+
+        &:hover {
+            background: $facebook-hover;
+        }
+    }
+
+    // Outline Button
+    &--outline {
+        background: transparent;
+        border: 1px solid $brand-color;
+
+        color: $brand-color;
+
+        &:hover {
+            box-shadow: none;
+        }
+    }
+
+    // Full Width Buttons
+    &--full {
+        width: 100%;
+    }
+}

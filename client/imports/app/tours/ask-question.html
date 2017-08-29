@@ -1,0 +1,39 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Ask a question</h5>
+  </div>
+  <div class="modal-body">
+    <p>Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae. Donec sagittis faucibus lacus eget blandit.</p>
+    <h6>Tour</h6>
+    <p>Donec sagittis faucibus lacus eget blandit.</p>
+    <form #f="ngForm" (ngSubmit)="askAQuestion()" [formGroup]="askAQuestionForm">
+      <div class="form-group">
+        <label for="type">Subject</label>
+        <div class="form-group">
+          <div class="input-wrap">
+            <input type="text" class="form-control" id="type" placeholder="Your subject here" name="subject" formControlName="subject"/>
+          </div>
+          <div *ngIf="askAQuestionForm.controls['subject'].errors && askAQuestionForm.controls['subject'].touched" class="has-error">
+            <div *ngIf="askAQuestionForm.controls.subject.hasError('required')">You have to enter subject to proceed.</div>
+            <div *ngIf="askAQuestionForm.controls.subject.hasError('minlength')">Min 5 characters required.</div>
+            <div *ngIf="askAQuestionForm.controls.subject.hasError('maxlength')">Max 50 characters allowed.</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Description">Message</label>
+        <div class="input-wrap">
+          <textarea class="form-control" id="Description" placeholder="Leave your message here..." name="message" formControlName ="message"></textarea>
+        </div>
+        <div *ngIf="askAQuestionForm.controls['message'].errors && askAQuestionForm.controls['message'].touched" class="has-error">
+          <div *ngIf="askAQuestionForm.controls.message.hasError('required')">You have to enter message to proceed.</div>
+          <div *ngIf="askAQuestionForm.controls.message.hasError('minlength')">Min 8 characters required.</div>
+          <div *ngIf="askAQuestionForm.controls.message.hasError('maxlength')">Max 255 characters allowed.</div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn green-btn full-btn" (click)="askAQuestion()">Send</button>
+  </div>
+</div>

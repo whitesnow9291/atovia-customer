@@ -1,0 +1,32 @@
+.filter {
+    @include grid-column;
+
+    @include grid-media( $tablet ) {
+        @include grid-column(3);
+    }
+
+    &__heading {
+        padding: 10px 0;
+
+        border-bottom: 1px solid $border-color;
+        @include clearfix();
+
+        &__title {
+            float: left;
+            margin: 0;
+
+            font-size: $base-font-size;
+        }
+
+        &__action {
+            float: right;
+
+            font-size: $font-size-sd;
+            color: $text-color;
+        }
+    }
+
+    &__list {
+        
+    }
+}

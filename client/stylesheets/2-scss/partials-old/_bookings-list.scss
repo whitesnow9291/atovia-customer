@@ -1,0 +1,76 @@
+.booking-list{
+  .tarvel-title{
+    width: 100%;
+    float: left;
+
+    .side-img {
+      width: 25%;
+      float: left;
+      @media (max-width: $ipad){
+        width: 100%;
+        text-align: center;
+      }
+      .img-wrp{
+        width: 100%;
+      }
+    }
+  }
+  .side-content{
+    width: 73%;
+    float: left;
+    @media (max-width: $ipad){
+      width: 100%;
+    }
+    .booking-list-desc{
+      .booking-list-top{
+        padding: 25px 20px;
+        @media (max-width: $laptop){
+          padding: 17px 20px;
+        }
+        h5{
+          color: $green-color;
+          font-size: $font-18;
+          font-weight: $weight_700
+
+        }
+        p{
+          margin: 0;
+          font-size: $font-14;
+          span{
+            color: $green-color;
+            margin-right: 5px;
+          }
+        }
+      }
+      .travel-desc{
+        padding: 25px 20px;
+        background: $grey-3;
+        border-top: 1px solid $border-color;
+        .col-sm-4{
+          padding: 0 5px;
+          .icon-img{
+            float: left;
+            width: 25%;
+            padding-right: 10px;
+            padding-top: 10px;
+          }
+          .icon-desc{
+            float: left;
+            width: 75%;
+            h5{
+              font-size: $font-14;
+              font-weight: $weight_700;
+              color: $grey-btn;
+              margin-bottom: 5px;
+            }
+            p{
+              font-size: $font-16;
+              color: $base-color;
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

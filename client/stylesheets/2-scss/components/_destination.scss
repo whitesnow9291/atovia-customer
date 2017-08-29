@@ -1,0 +1,64 @@
+.destination {
+    $root: &; // Setup parent as variable
+    
+    position: relative;
+    max-width: 220px;
+    padding: 160px 0;
+    margin-bottom: 20px;
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    box-shadow: $base-box-shadow;
+    
+    @include transition(all 0.2s ease-in-out);
+    @include grid-column;
+
+    @include grid-media( $tablet ) {
+        max-width: none;
+        padding: 100px 0;
+
+        @include grid-column(6);
+    }
+
+    @include grid-media( $laptop ) {
+        @include grid-column(3);
+    }
+
+    &:hover {
+        box-shadow: $hover-box-shadow;
+        @include transform(translateY(-2px));
+    }
+
+    &__overlay {
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        background-color: rgba(black, 0.2);
+
+        @include transition(background-color 0.3s ease-in-out);
+
+        #{$root}:hover & {
+            background-color: rgba(black, 0.5);
+        }
+    }
+
+    &__name {
+        margin: 0;
+        padding: 142px 0;
+
+        text-align: center;
+        color: white;
+
+        @include grid-media( $tablet ) {
+            padding: 82px 0;
+        }
+    }
+}

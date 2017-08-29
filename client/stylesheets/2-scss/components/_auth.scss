@@ -1,0 +1,205 @@
+$auth-pages: (
+    'login',
+    'signup',
+    'forgot',
+    'reset'
+);
+
+$auth-layout: (
+    columns: 2,
+    gutter: 0
+);
+
+// Authentication outer wrapper
+.auth-wrapper {
+    position: relative;
+    @include clearfix;
+
+    @include grid-media( $tablet ) {
+        height: 100%;
+    }
+}
+
+.auth-display,
+.auth-content {
+    @include grid-column(2, $auth-layout);
+        
+    @include grid-media( $tablet ) {
+        height: 100%;
+        @include grid-column(1, $auth-layout);
+    }
+}
+
+// Authentication display column
+.auth-display {
+    padding: 30px 20px;
+
+    @include grid-media( $tablet ) {
+        padding: 0;
+    }
+
+    // Display Modifiers
+    // Function to generate different modifier classes for auth pages
+    @each $page in $auth-pages {
+
+        &--#{$page} {
+            background: white;
+
+            @include grid-media( $tablet ) {
+                background: url(../img/bg-#{$page}-lg.jpg) center bottom/cover no-repeat;
+            }
+        }
+    }
+
+    &__logo {
+        display: block;
+        width: 150px;
+        // margin: 0 auto;
+
+        @include grid-media( $tablet ) {
+            margin-left: 0;
+
+            position: absolute;
+            top: 40px;
+            left: 40px;
+        }
+    }
+
+    &__content {
+        display: none;
+        height: 100%;
+        padding: 140px 40px 40px;
+
+        @include background-image(linear-gradient( transparent 0, rgba(black, 0.3) 100%));
+
+        @include grid-media( $tablet ) {
+            display: block;
+            padding: 300px 40px;
+        }
+    }
+
+    &__heading {
+        position: relative;
+        margin-bottom: 30px;
+
+        font-size: $font-size-gamma;
+        color: white;
+
+        &:before {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+
+            background: white;
+            border-radius: $round-border-radius;
+
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+        }
+    }
+
+    &__text {
+        font-size: $font-size-zeta;
+        color: white;
+    }
+}
+
+// Authentication content column
+.auth-content {
+
+    @include grid-media( $tablet ) {
+        box-shadow: -4px 0 20px rgba(black, 0.2);
+    }
+
+    &__outer {
+        @extend .parent;
+    }
+
+    &__inner {
+        @extend .child;
+    }
+
+    &__wrapper {
+        padding: 20px;
+
+        @include grid-media( $large-mobile ) {
+            width: 450px;
+            padding: 40px 20px;
+            margin: 0 auto;
+        }
+
+        @include grid-media( $tablet ) {
+            width: auto;
+            padding: 0 20px;
+        }
+
+        @include grid-media( $laptop ) {
+            width: 450px;
+            padding: 0;
+        }
+    }
+
+    &__heading {
+        font-size: $font-size-gamma;
+    }
+
+    &__subheading {
+        margin-bottom: 20px;
+        font-size: $base-font-size;
+
+        @include grid-media( $tablet ) {
+            margin-bottom: 40px;
+        }
+    }
+
+    &__separator {
+        margin: 20px 0;
+
+        text-align: center;
+
+        &__text {
+            position: relative;
+
+            font-family: $base-font-family;
+            font-weight: $base-font-weight;
+            font-size: $font-size-sd;
+            text-align: center;
+            color: $grey-color-light;
+
+            &:before,
+            &:after {
+                content: '';
+                display: block;
+                width: 80%;
+                height: 1px;
+
+                position: absolute;
+                top: 50%;
+
+                background: $grey-color-lighter;
+
+                @include grid-media( $tablet ) {
+                    width: 100%;
+                }
+            }
+
+            &:before {
+                left: -100%;
+
+                @include grid-media( $tablet ) {
+                    left: -120%;
+                }
+            }
+
+            &:after {
+                right: -100%;
+
+                @include grid-media( $tablet ) {
+                    right: -120%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,206 @@
+.useracc-header .navbar .user-drop .navbar-text ul li {
+	.user-img,
+	.user-img img {
+		width: 30px;
+		height: 15px;
+		@include border-radius(0, 0, 0, 0);
+  }
+
+	.menu {
+		margin-top: 4px;
+		&:after {
+			@extend .none;
+    }
+		span {
+			margin-right: 10px;
+    }
+  }
+}
+.payment {
+	.detail-summary {
+		padding: 20px 0;
+		h4 {
+			font-size: $font-20;
+			font-weight: $weight_700;
+			color: $label-color;
+			margin-bottom: 25px;
+			@media (max-width: $desktop) {
+				font-size: $font-16;
+      }
+    }
+		.tour-details {
+			border-right: 1px solid $border-color;
+			@media (max-width: $small-grid) {
+				border-right: 0;
+				@include border-bottom(2px, solid, $border-color);
+				margin-bottom: 15px;
+				padding-bottom: 10px;
+				height: auto!important;
+      }
+			.img-wrp {
+				height: 64px;
+				width: 64px;
+				border-radius: 4px;
+				/*background-color: $grey-4;*/
+      }
+			h5 {
+				font-size: $font-18;
+				font-weight: $weight_700;
+				color: $label-color;
+				margin-bottom: 10px;
+      }
+			p {
+				font-size: $font-16;
+				color: $grey-anchor;
+				margin: 0;
+				span {
+					color: $green-anchor;
+					margin-right: 5px;
+        }
+				span.rating {
+					padding-left: 10px;
+					margin: 0 10px;
+					border-left: 1px solid $border-color;
+        }
+				span.stars {
+					margin-left: 10px;
+					vertical-align: bottom;
+					label.star {
+						cursor: default;
+					}
+				}
+      }
+			ul {
+				@extend .pull_left;
+				width: $full;
+				margin-top: 20px;
+				li {
+					@extend .inline-block;
+					@extend .pull_left;
+					h6 {
+						font-size: $font-16;
+						color: $grey-anchor;
+          }
+					p {
+						font-size: $font-20;
+						font-weight: $weight_700;
+						color: $label-color ;
+
+						@media (max-width: $desktop) {
+							font-size: $font-16;
+            }
+          }
+        }
+      }
+    }
+		.fee-summary {
+
+			ul {
+				li {
+					@include border-bottom(1px, dashed, $border-color);
+					padding: 15px 0;
+					@extend .pull_left;
+					width: $full;
+					h5 {
+						font-size: $font-14;
+						color: $black;
+          }
+					p {
+						color: $grey-anchor;
+						font-size: $font-14;
+						margin: 0;
+          }
+					h2 {
+						font-size: $font-20;
+						font-weight: $weight_700;
+						color: $label-color;
+          }
+					.left-content {
+						@extend .pull_left;
+          }
+					.right-content {
+						@extend .pull_right;
+						@extend .text-right;
+          }
+        }
+
+				li:last-of-type {
+					border: 0;
+        }
+      }
+    }
+  }
+	.grey-bg {
+		.tab-list {
+			li {
+				background: $white;
+				@media (max-width: $ipad) {
+					width: 33.33%;
+        }
+				h4 {
+					margin-top: 10px;
+        }
+      }
+    }
+		.right-wrap {
+			padding: 0!important;
+			.tour-header {
+				padding: 30px 25px;
+				h3 {
+					font-size: $font-20;
+					color: $label-color;
+					margin: 0;
+					span {
+						font-size: $font-16;
+						color: $grey-anchor;
+						margin-left: 15px;
+						font-weight: $weight_400;
+          }
+        }
+      }
+			.steps {
+				border-top: 1px solid $border-color;
+				@include border-bottom(1px, solid, $border-color);
+				padding: 20px 25px;
+      }
+			.no-border {
+				border: 0;
+				padding-top: 0;
+      }
+    }
+		.signup-option {
+			@extend .pull_left;
+			width: $full;
+    }
+		.payment-wrap {
+			padding: 30px 25px!important;
+			h3 {
+				font-size: $font-20;
+				color: $label-color;
+				margin: 0;
+      }
+			.radio-custom + .radio-custom-label::before {
+				background: $white;
+				padding: 8px;
+				@include border-all(1px, solid, $border-color);
+      }
+			.radio-custom:checked + .radio-custom-label:before {
+				content: '';
+				height: 23px;
+				width: 23px;
+				@include border-radius($full, $full, $full, $full);
+				background: $green-color;
+      }
+			.side-img {
+				margin-top: 35px;
+      }
+    }
+		.signup-option {
+			.green-btn {
+				span {
+					margin-left: 5px;
+        }
+      }
+    }
+  }
+}

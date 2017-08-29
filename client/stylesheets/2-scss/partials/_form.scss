@@ -1,0 +1,37 @@
+/* General Form Elements */
+label {
+    display: block;
+    margin-bottom: 5px;
+
+    text-transform: uppercase;
+    font-family: $base-font-family;
+    font-weight: $heading-font-weight;
+    font-size: $font-size-sm;
+    color: $label-color;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+
+    background: white;
+    border: 1px solid $border-color;
+    border-radius: $base-border-radius;
+
+    font-family: $base-font-family;
+    font-weight: $base-font-weight;
+    font-size: $font-size-sd;
+
+    @include transition(border 0.25s ease-in-out);
+
+    @include placeholder {
+        color: $grey-color-light;
+    }
+
+    @include appearance(none);
+
+    &:focus {
+        border: 1px solid $brand-color;
+        outline: 0;
+    }
+}

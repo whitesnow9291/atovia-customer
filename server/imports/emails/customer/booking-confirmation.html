@@ -1,0 +1,15 @@
+Hi ${booking.user.firstName}, <br />
+Your booking order for tour name ${booking.tour.name} has been placed and further confirmation will be sent after successful payment. <br />
+Please find tour details below: <br />
+<br />
+<ul>
+<li>Booking ID: ${booking.uniqueId}</li>
+<li>Departure: ${booking.tour.departure}</li>
+<li>Destination: ${booking.tour.destination}</li>
+<li>Start Date: ${getFormattedDate(booking.startDate)} </li>
+<li>End Date: ${getFormattedDate(booking.endDate)} </li>
+<li>Num of Travellers: ${booking.numOfTravellers} </li>
+<li>Total Price: ${booking.totalPrice}</li>
+<li> View Link: <a href="${process.env.ROOT_URL}/bookings/view/${booking._id}">${booking.tour.name}</a> </li>
+</ul>
+<p>Team Atorvia</p>

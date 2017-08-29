@@ -1,0 +1,27 @@
+.legal {
+    padding: 50px 0;
+
+    &__sidebar {
+        @include grid-column;
+
+        @include grid-media( $tablet ) {
+            @include grid-column(4);
+        }
+
+        @include grid-media( $laptop ) {
+            @include grid-column(3);
+        }
+    }
+
+    &__content {
+        @include grid-column;
+
+        @include grid-media( $tablet ) {
+            @include grid-column(8);
+        }
+
+        @include grid-media( $laptop ) {
+            @include grid-column(9);
+        }
+    }
+}

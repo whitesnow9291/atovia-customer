@@ -1,0 +1,34 @@
+.sidebar {
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__item {
+
+    }
+
+    &__link {
+        display: block;
+        padding: 10px;
+
+        font-weight: $medium-font-weight;
+        font-size: $font-size-sd;
+        color: $text-color;
+
+        @include transition(all 0.2s ease-in-out);
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &--active {
+            background: $grey-color-bg;
+
+            font-weight: $heading-font-weight;
+            color: $brand-color;
+        }
+    }
+}

@@ -1,0 +1,154 @@
+.has-error {
+  font-size: 14px;
+  color: #D8000C
+}
+.content-page-heading {
+  text-align: left;
+  margin: 15px 0 0 15px;
+}
+.content-page-content {
+  text-align: center;
+  margin: 15px 0 0 15px;
+}
+
+.slider-box-custom {
+  label, input {
+    border: none;
+    display: inline-block;
+    margin-right: -4px;
+    vertical-align: top;
+    width: 30%;
+  }
+  input {
+    width: 70%;
+  }
+  .slider-custom {
+    margin: 25px 0;
+  }
+}
+
+.list-detail {
+  h4 {
+    cursor: pointer;
+  }
+}
+.img-set {
+  width: 1680px !important;
+  height: 600px !important;
+}
+
+.search-box {
+  .completer-input {
+    width: 100%;
+    padding: 10px 0;
+    border: 0;
+    box-shadow: none;
+    outline: 0;
+  }
+}
+
+.completer-dropdown-holder, .completer-dropdown {
+  width: 90% !important;
+}
+.completer-row-wrapper, .completer-row, .completer-item-text, .completer-list-item-holder, .completer-list-item {
+  width: 100% !important;
+}
+.process-wrap {
+    font-weight: bold;
+}
+
+.booking2 {
+  .tour-detail {
+    border-bottom: none;
+  }
+  .tour-itinerary, .tour-detail, .gallery-wrap, .inclusive-policy {
+    padding-left: 30px; padding-right: 30px;
+  }
+  .gallery-wrap {
+    .img-wrap {
+      width: 49.5%;
+    }
+  }
+}
+
+
+.list-faqs {
+  margin-left: 40px;
+  margin-top: 30px;
+  margin-right: 40px;
+  ul li {
+    margin-left: 40px;
+    list-style: initial;
+  }
+}
+
+
+.content-page {
+  margin-left: 40px;
+  margin-right: 40px;
+  .page-heading {
+    padding-left: 20px;
+    padding-top: 20px;
+    font-size: 35px;
+  }
+}
+
+.pagination-control {
+  border: none !important;
+  background: none !important;
+}
+
+.rate-star {
+  cursor: pointer;
+  float: left;
+  position: absolute;
+  padding-left: 25px;
+  .fa-star {
+    color: #15987e !important;
+  }
+}
+.destination-wrap {
+  .tour-title {
+    h4 {
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+.home-page {
+  margin-top: 15px;
+}
+.cancel-form {
+  padding-left: 10px;
+  padding-top: 10px;
+  .row {
+    padding-top: 10px;
+    .btn {
+      margin-bottom: 20px;
+    }
+  }
+  h3 {
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 5px;
+    color: #5a6b81;
+  }
+}
+.cancel {
+  width: 40%;
+}
+.modal-dialog {
+  margin-top: 100px;
+}
+
+span.ratings {
+  color: #8597ac !important;
+  font-size: 18px;
+}
+
+.paginationbutton {
+  float: left;
+  width: 100%;
+}

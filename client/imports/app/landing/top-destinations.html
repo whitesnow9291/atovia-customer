@@ -1,0 +1,56 @@
+<!--<main class="">
+	<section class="banner">
+		<div class="container-fluid">
+			<navbar></navbar>
+		</div>
+		<div class="container">
+			<div class="row justify-content-md-center align-items-center">
+				<div class="col-lg-12 align-self-center">
+					<div class="search-box">
+						<h1 >Top Destinations</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="deals">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3" *ngFor = "let tour of tours">
+          <a [routerLink]="['/tours/destination', tour._id]"><div class="destination-wrap">
+            <span *ngIf="!tour.featuredImage"><img src="/images/destination.png" /></span>
+            <span *ngIf="!!tour.featuredImage && tour.featuredImage?.url"><img src="uploads/images/{{tour.featuredImage.id}}-255-280.jpg" /></span>
+            <p>{{tour._id}}</p>
+          </div></a>
+        </div>
+			</div>
+		</div>
+	</section>
+
+	<app-footer></app-footer>
+</main>-->
+
+<navbar></navbar>
+
+<section class="banner banner--destination">
+    <div class="container">
+        <div class="banner__content">
+            <h1 class="banner__heading">Top Destinations</h1>
+            <p class="banner__text">Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum bibendum. Duis tincidunt urna non pretium porta. Nam condimentum vitae ligula vel ornare. Phasellus at semper turpis. Nunc eu tellus tortor.</p>
+        </div>
+    </div>
+</section>
+
+<section class="wrapper">
+    <div class="container">
+        <div class="card-slider" *ngFor = "let tour of tours">
+            <a [routerLink]="['/tours/destination', tour._id]" class="destination" style="background-image: url(uploads/images/{{tour.featuredImage.id}}-255-280.jpg)">
+                <div class="destination__overlay">
+                    <h4 class="destination__name">{{ tour._id }}</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

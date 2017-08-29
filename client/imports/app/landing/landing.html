@@ -1,0 +1,303 @@
+<main>
+  <navbar></navbar>
+  <section class="hero">
+      <div class="container">
+          <div class="hero__form">
+              <form action="" class="search-form">
+                  <ng2-completer [datasource]="dataService" [minSearchLength]="3" [inputClass]="search-form__input" id="search" placeholder="Where do you want to go?" type="text" #searchQuery (keyup.enter)="doSearch(searchQuery.value)" (selected)="navigateTour($event)"></ng2-completer>
+                  <i class="material-icons search-form__icon">place</i>
+                  <a class="button button--primary search-form__button" (click)="doSearch(searchQuery.value)">Explore <i class="material-icons button__icon search-form__arrow">arrow_forward</i></a>
+              </form>
+              <p *ngIf="error" class="has-error">{{error}}</p>
+          </div>
+      </div>
+      <div class="hero__backdrop">
+        <div id="promoSlider" class="slider">
+          <div class="slider__item slider__item--one">
+              <div class="container">
+                <div class="slider__content">
+                    <h1 class="slider__heading">Experience Vietnam.</h1>
+                    <h4 class="slider__subheading">Discover &amp; book your next experience.</h4>
+                </div>
+              </div>
+          </div>
+          <div class="slider__item slider__item--two">
+              <div class="container">
+                  <div class="slider__content">
+                      <h1 class="slider__heading">Best Value Family Deal.</h1>
+                      <h4 class="slider__subheading">Why pay more for your next family trip.</h4>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <!--<div class="cta hero__cta" data-id="1">
+          <div class="container">
+              <div class="cta__content">
+                  <i class="material-icons cta__icon">place</i>
+                  <h6 class="cta__place">Halong Bay, Vietnam</h6>
+              </div>
+              <div class="cta__action">
+                  <a href="#" class="button button--outline cta__button">Explore Vietnam <i class="material-icons button__icon">arrow_forward</i></a>
+              </div>
+          </div>
+      </div>
+      <div class="cta hero__cta hero__cta--2" data-id="2">
+          <div class="container">
+              <div class="cta__content">
+                  <i class="material-icons cta__icon">place</i>
+                  <h6 class="cta__place">Phuket, Thailand</h6>
+              </div>
+              <div class="cta__action">
+                  <a href="#" class="button button--outline cta__button">Explore Thailand <i class="material-icons button__icon">arrow_forward</i></a>
+              </div>
+          </div>
+      </div>-->
+  </section>
+
+  <!--Features Wrapper-->
+  <section class="wrapper wrapper--feature">
+    <div class="container">
+      <div class="feature-block">
+        <header class="feature-block__header">
+          <i class="material-icons feature-block__icon">attach_money</i>
+          <h6 class="feature-block__heading">Lowest Prices Guarantee</h6>
+        </header>
+        <p class="feature-block__text">Start saving today. Our tours are sold directly from our local tour suppliers.</p>
+      </div>
+      <div class="feature-block">
+        <header class="feature-block__header">
+          <i class="material-icons feature-block__icon">security</i>
+          <h6 class="feature-block__heading">Encrypted Payment Gateway</h6>
+        </header>
+        <p class="feature-block__text">Customer safety is our first priority. Your data is encrypted with our 256 bit SSL.</p>
+      </div>
+      <div class="feature-block">
+        <header class="feature-block__header">
+          <i class="material-icons feature-block__icon">live_help</i>
+          <h6 class="feature-block__heading">24/7 Support</h6>
+        </header>
+        <p class="feature-block__text">Need help on or before your tour? Contact us at (07) 0000 0000 or email us at <a href="mailto:support@atorvia.com" class="feature-block__link">support@atorvia.com</a>.</p>
+      </div>
+    </div>
+  </section>
+  <!--Features Wrapper End-->
+
+  <!--destinations-->
+  <!--<section class="destinations">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>See our top 8 destinatons</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3" *ngFor = "let tour of topItems">
+          <a [routerLink]="['/tours/destination', tour._id]"><div class="destination-wrap">
+            <span *ngIf="!tour.featuredImage"><img src="/images/destination.png" /></span>
+            <span *ngIf="!!tour.featuredImage && tour.featuredImage?.url"><img src="uploads/images/{{tour.featuredImage.id}}-255-280.jpg" /></span>
+            <p>{{tour._id}}</p>
+          </div></a>
+        </div>
+      </div>
+    </div>
+  </section>-->
+  <section class="wrapper">
+    <div class="container">
+        <div class="wrapper__inner">
+            <h2 class="content__heading">Trending Destinations</h2>
+            <p class="content__text">Discover destinations where everyone is craving for.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card-slider" *ngFor = "let tour of topItems">
+            <a [routerLink]="['/tours/destination', tour._id]" class="destination" style="background-image: url(uploads/images/{{tour.featuredImage.id}}-255-280.jpg)">
+                <div class="destination__overlay">
+                    <h4 class="destination__name">{{ tour._id }}</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="wrapper__inner">
+            <a href="./destination.html" class="button content__button">View all Destinations <i class="material-icons button__icon">arrow_forward</i></a>
+        </div>
+    </div>
+</section>
+  <!--destinations-->
+
+  <!--deals-->
+  <!--<section class="deals">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Our hottest deals</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6" *ngFor = "let tour of hotItems">
+          <a [routerLink]="['/tours', tour.slug]"><div class="destination-wrap">
+            <span *ngIf="!tour.images?.length"><img src="/images/destination.png" /></span>
+            <span *ngIf="tour.images?.length > 0 && tour.featuredImage?.url"><img src="uploads/images/{{tour.featuredImage.id}}-350-280.jpg" /></span>
+            <span *ngIf="tour.images?.length > 0 && !tour.featuredImage?.url"><img src="uploads/images/{{tour.featuredImage.id}}-350-280.jpg" /></span>
+            <div class="overlay"></div>
+            <div class="content">
+              <div class="row">
+                <div class="col-8 tour-title">
+                  <h4 title="{{tour.name}}">{{tour.name}}</h4>
+                  <p title="{{tour.departure}}, {{tour.destination}}">
+                    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                     {{tour.destination}}
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p>From</p>
+                  <h3><currency [amount]=getStartPrice(tour.dateRange)></currency></h3>
+                </div>
+              </div>
+            </div>
+          </div></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <button class="btn green-outline" [routerLink]="['/tours/search']">See all popular tours <span><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+        </div>
+      </div>
+    </div>
+  </section>-->
+  <!--deals-->
+
+  <section class="wrapper">
+    <div class="container">
+        <div class="wrapper__inner">
+            <h2 class="content__heading">Popular Tours</h2>
+            <p class="content__text">Here's some best selling tours for you.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card-slider" *ngFor = "let tour of hotItems">
+          <a [routerLink]="['/tours', tour.slug]" class="tour-card tour-card--home">
+              <div class="tour-card__thumb" *ngIf="tour.images?.length > 0 && !tour.featuredImage?.url" style="background-image: uploads/images/{{tour.featuredImage.id}}-350-280.jpg">
+                  <div class="tour-card__info">
+                      <!--<span class="tag tour-card__type">{{ tour.tourType }}</span>-->
+                      <div class="price tour-card__price"><span class="price__text">From</span><span class="price__currency">AUD$</span><span class="price__amount"><currency [amount]=getStartPrice(tour.dateRange)></currency></span></div>
+                  </div>
+              </div>
+              <div class="tour-card__panel">
+                  <div class="tour-card__row">
+                      <p class="tour-card__location"><i class="material-icons tour-card__icon">place</i> {{ tour.destination }}</p>
+                      <!--{{#if tour.hasFlight }}<div class="tour-card__extra"><i class="material-icons tour-card__icon">airplanemode_active</i> Flight Inclusive</div>{{/if }}-->
+                  </div>
+                  <h6 class="tour-card__name">{{ tour.name }}</h6>
+                  <ul class="meta tour-card__meta">
+                      <li class="meta__item">
+                          <div class="rating">
+                              <div class="rating__star">
+                                  <i class="material-icons rating__icon rating__icon--active">star</i>
+                                  <i class="material-icons rating__icon rating__icon--active">star</i>
+                                  <i class="material-icons rating__icon rating__icon--active">star</i>
+                                  <i class="material-icons rating__icon rating__icon--active">star</i>
+                                  <i class="material-icons rating__icon">star</i>
+                              </div>
+                              <p class="rating__count">{{ tour.rating }}</p>
+                          </div>
+                      </li>
+                      <li class="meta__item">X Reviews</li>
+                  </ul>
+              </div>
+          </a>
+        </div>
+    </div>
+</section>
+
+  <!--Get Inspired-->
+  <!--This section will auto-generated later-->
+  <section class="wrapper">
+    <div class="container">
+        <div class="wrapper__inner">
+            <h2 class="content__heading">Get Inspired</h2>
+            <p class="content__text">Get inspiration for your next trip.</p>
+        </div>
+    </div>
+
+    <div class="interest-layout">
+        <div class="interest-layout__featured">
+            <div class="interest-wrapper">
+                <a href="#" class="interest-card interest-card--featured interest-card--relaxation">
+                    <div class="interest-card__panel">
+                        <h2 class="interest-card__heading">Relaxation</h2>
+                        <p class="interest-card__text">Get away from your 9 -5 and enjoy everything around you.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="interest-layout__general">
+            <div class="interest-wrapper">
+                <a href="#" class="interest-card interest-card--foodie">
+                    <div class="interest-card__panel">
+                        <h2 class="interest-card__heading">Foodie</h2>
+                        <p class="interest-card__text">Enjoy street foods, luxery restaurants and more.</p>
+                    </div>
+                </a>
+                <a href="#" class="interest-card interest-card--scenery">
+                    <div class="interest-card__panel">
+                        <h2 class="interest-card__heading">Scenery</h2>
+                        <p class="interest-card__text">Visit epic sceneries, famous sightseeing spots and more.</p>
+                    </div>
+                </a>
+                <a href="#" class="interest-card interest-card--adventure">
+                    <div class="interest-card__panel">
+                        <h2 class="interest-card__heading">Adventure</h2>
+                        <p class="interest-card__text">Experience bungee jump, river kayak and more.</p>
+                    </div>
+                </a>
+                <a href="#" class="interest-card interest-card--cultural">
+                    <div class="interest-card__panel">
+                        <h2 class="interest-card__heading">Cultural</h2>
+                        <p class="interest-card__text">Visit local museums, ancient structures and festivals.</p>
+                    </div>
+                </a>
+                <a href="#" class="interest-card interest-card--art">
+                    <div class="interest-card__panel">
+                        <h2 class="interest-card__heading">Art Enthusiast</h2>
+                        <p class="interest-card__text">Visit local art galleries, desginer stores and more.</p>
+                    </div>
+                </a>
+                <a href="#" class="interest-card interest-card--music">
+                    <div class="interest-card__panel">
+                        <h2 class="interest-card__heading">Music Lovers</h2>
+                        <p class="interest-card__text">Attend band shows, musical and more.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!--Get Inspired End-->
+
+  <!--Newsletter-->
+  <div class="wrapper wrapper--newsletter">
+    <div class="container">
+        <div class="wrapper__inner">
+            <div class="newsletter">
+                <div class="newsletter__content">
+                  <h6 class="newsletter__subheading">atorvia newsletter</h6>
+                  <h2 class="newsletter__heading">Receive exclusive tour deals up to 20% off.</h2>
+                </div>
+                <div class="newsletter__form">
+                  <div class="newsletter__input">
+                    <input type="email" class="newsletter__field" placeholder="Enter your email address" #email>
+                    <i class="material-icons newsletter__icon">mail</i>
+                  </div>
+                  <button class="button button--primary newsletter__button"(click)="doSubscribe(email)">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <app-footer></app-footer>
+
+</main>

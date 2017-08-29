@@ -1,0 +1,258 @@
+.search {
+	.user-head {
+		height: auto;
+		padding: 15px;
+		background-color: $light-bg;
+		margin-top: 2px;
+		border: 0;
+		a {
+			font-size: $font-16;
+			color: $green-anchor;
+			@extend .vertical-middle;
+			@media (max-width: $small-phone) {
+				font-size: $font-12;
+      }
+			span {
+				margin-right: 5px;
+      }
+    }
+		.select-style {
+			@extend .pull_right;
+			@extend .relative;
+			width: 255px;
+			@media (max-width: $medium-phone) {
+				width: auto;
+      }
+			span {
+				@extend .pull_left;
+				margin-right: 5px;
+				@extend .absolute;
+				top: 3px;
+				left: 15px;
+      }
+			select {
+				padding-left: 30px
+      }
+    }
+  }
+	.banner {
+		@include cover-background("/images/search.png", $background-top:"0%", $background-left:"0%");
+  }
+	.search-box {
+		padding: 160px 0 50px;
+		h1 {
+			margin-bottom: 25px;
+    }
+		p {
+			color: $white;
+			font-size: $font-18;
+			margin: 0;
+    }
+  }
+	.search-list {
+		padding: 35px 0;
+		.listing {
+			@extend .pull_left;
+			width: $full;
+    }
+		.listing > li {
+			margin-bottom: 20px;
+			@extend .pull_left;
+			width: $full;
+			@include border-all(1px, solid, $border-color);
+			@include border-radius (4px, 4px, 4px, 4px);
+			background: $white;
+
+			.side-image {
+				@extend .pull_left;
+				@extend .inline-block;
+				width: 31%;
+				min-height: 255px;
+				@media (max-width: $laptop) {
+					margin: 0 auto;
+					float: none;
+					min-height: auto;
+					display: block;
+					text-align: center;
+					margin-top: 25px;
+					width: auto;
+					height: auto!important;
+				}
+				img {
+					width: $full;
+					height: $full;
+					@media (max-width: $laptop) {
+						width: auto;
+						height: auto!important
+					}
+				}
+			}
+			.list-cotent {
+				@extend .pull_left;
+				@extend .inline-block;
+				width: 69%;
+				@media (max-width: $laptop) {
+					width: 100%;
+				}
+				.list-detail {
+					padding: 25px 20px;
+					@include border-bottom(1px, solid, $border-color)
+					h4 {
+						font-size: $font-20;
+						color: $label-color;
+						margin-bottom: 15px;
+						@media (max-width: $desktop) {
+							font-size: $font-16;
+						}
+						a {
+							@extend .pull_right;
+							color: $label-color;
+						}
+					}
+					p {
+						color: $grey-anchor;
+						margin: 0;
+						span {
+							color: $green-anchor;
+							margin-right: 5px;
+						}
+						span.rating {
+							margin-left: 15px;
+							padding-left: 15px;
+							border-left: 1px solid $border-color;
+						}
+					}
+					span.stars {
+						margin-left: 10px;
+						/*vertical-align: bottom;*/
+						label.star {
+							cursor: default;
+						}
+					}
+				}
+			}
+			.info {
+				padding: 10px 20px;
+				background: $grey-3;
+				@extend .pull_left;
+				width: $full;
+				h3 {
+					font-size: $font-20;
+					color: $label-color;
+					margin-bottom: 10px;
+					span {
+						margin-left: 5px;
+						color: $green-anchor;
+					}
+					.grey-box {
+						height: 40px;
+						width: 40px;
+						margin-top: -29px;
+						@include border-radius (2px, 2px, 2px, 2px);
+						background: $grey-4;
+						@extend .inline-block;
+						@extend .vertical-middle;
+						margin-right: 10px;
+						img{
+							height: 100%;
+							width: 100%;
+							@include border-radius (2px, 2px, 2px, 2px);
+						}
+					}
+				}
+				p {
+					font-size: $font-14;
+					line-height: 17px;
+					color: $grey-anchor;
+				}
+				ul {
+					li {
+						@extend .inline-block;
+						@extend .pull_left;
+						width: 30%;
+						margin-right: 15px;
+						border-right: 1px solid $border-color;
+						@media (max-width: $small-grid) {
+							width: 100%;
+							border-right: 0;
+							margin: 0 0 10px;
+						}
+					}
+					li:last-of-type {
+						margin: 0;
+						border: 0;
+					}
+					h5 {
+						font-size: $font-14;
+					}
+					p {
+						margin: 0;
+						font-size: $font-16;
+						color: $green-anchor;
+						margin-top: 9px;
+					}
+				}
+			}
+		}
+		.pagination-wrap {
+			@extend .pull_left;
+			width: $full;
+			button.green-btn {
+				padding: 15px 25px;
+				width: auto;
+			}
+    }
+  }
+	.filter-wrap {
+		.hide {
+			@extend .none;
+			background:  $green-color;
+			color: $white;
+			margin: 0 auto 25px;
+			@include border-all (1px, solid, $border-color)
+			@media (max-width: $ipad) {
+				display: block;
+      }
+    }
+
+		.filter {
+			@media (max-width: $ipad) {
+				display: none;
+      }
+			h3 {
+				font-size: $font-20;
+				color: $label-color;
+				font-weight: $weight_400;
+				margin-bottom: 30px;
+      }
+			h4 {
+				font-size: $font-16;
+				color: $green-color;
+				font-weight: $weight_400;
+				margin-bottom: 10px;
+				padding-bottom: 10px;
+				@include border-bottom(1px, solid, $border-color)
+      }
+			ul {
+				margin-bottom: 30px;
+      }
+    }
+  }
+}
+#endPriceRange{
+	@extend .pull_right;
+}
+.ui-slider-handle{
+	@include border-radius($full, $full, $full, $full);
+	top: -4px !important;
+	background: $green-color !important;
+}
+.ui-state-default{
+	background: $green-color;
+}
+.ui-widget-header{
+	background: $grey-bg;
+}
+.ui-corner-all{
+	@include border-radius(10px, 10px, 10px, 10px);
+}

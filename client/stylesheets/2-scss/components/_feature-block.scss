@@ -1,0 +1,114 @@
+.feature-block {
+    $root: &;
+    margin-top: 20px;
+    @include grid-column;
+
+    &:nth-child(1) {
+        margin-top: 0;
+    }
+
+    @include grid-media( $tablet ) {
+        margin-top: 0;
+        @include grid-column(4);
+    }
+    
+    &__header {
+        margin-bottom: 10px;
+        @include clearfix();
+    }
+
+    &__icon {
+        float: left;
+        width: 20px;
+        margin: 0 10px 0 0;
+
+        vertical-align: middle;
+        font-size: $base-font-size;
+        color: $brand-color;
+
+        @include grid-media( $tablet ) {
+            float: none;
+            width: auto;
+            margin-bottom: 10px;
+            
+            font-size: $font-size-delta;
+        }
+
+        @include grid-media( $laptop ) {
+            float: left;
+            width: 20px;
+            margin-bottom: 0;
+
+            font-size: $base-font-size;
+        }
+    }
+
+    &__heading {
+        float: left;
+        margin: 0;
+        font-size: $font-size-sd;
+
+        @include grid-media( $tablet ) {
+            float: none;
+        }
+
+        @include grid-media( $laptop ) {
+            float: left;
+        }
+    }
+
+    &__text {
+        margin: 0;
+        padding-left: 30px;
+        
+        font-size: $font-size-sd;
+
+        @include grid-media( $tablet ) {
+            padding: 0;
+        }
+
+        @include grid-media( $laptop ) {
+            padding-left: 30px;
+        }
+    }
+
+    &__link {
+        font-weight: $button-font-weight;
+        font-size: $font-size-sd;
+        color: $brand-color;
+
+        &:hover {
+            text-decoration: underline;
+            color: $brand-hover;
+        }
+    }
+
+    // Modifiers
+    &--supplier {
+        margin-top: 60px;
+
+        &:nth-child(1) {
+            margin-top: 60px;
+        }
+
+        #{$root}__header {
+            margin-bottom: 20px;
+        }
+
+        #{$root}__icon,
+        #{$root}__heading {
+            font-size: $font-size-epsilon;
+        }
+
+        #{$root}__icon {
+            position: relative;
+            top: 3px;
+            
+            margin-right: 20px;
+        }
+
+        #{$root}__text {
+            padding-left: 40px;
+        }
+    }
+}

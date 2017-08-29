@@ -1,0 +1,34 @@
+/*=======================================
+=            General Helpers            =
+=======================================*/
+.clearfix{
+	@include clearfix;
+}
+
+// Helper to center element(s) vertically
+.parent{
+    display: table;
+    height: 100%;
+    width: 100%;
+
+	.child{
+        display: table-cell;
+        width: 100%;
+
+        vertical-align: middle;
+	}
+}
+
+// Parallax Helper
+.parallax {
+	background-attachment: fixed !important;
+}
+
+/*==================================
+=            JS Heleprs            =
+==================================*/
+.hidden{
+	display: none;
+	visibility: hidden;
+}
+

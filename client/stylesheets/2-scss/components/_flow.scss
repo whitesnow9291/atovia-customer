@@ -1,0 +1,203 @@
+.flow {
+    position: relative;
+    margin-top: 50px;
+
+    text-align: center;
+
+    @include clearfix;
+
+    @include grid-media( $tablet ) {
+        margin-top: 100px;
+    }
+
+    &__inner {
+        position: relative;
+        display: inline-block;
+        @include clearfix;
+    }
+    
+    &__card {
+        position: relative;
+
+        background: white;
+        box-shadow: $card-box-shadow;
+
+        font-family: $base-font-family;
+        font-weight: $heading-font-weight;
+        text-align: center;
+        color: $label-color;
+
+        width: 200px;
+        padding: 30px;
+        margin-top: 60px;
+
+        &:nth-of-type(1) {
+            margin-left: 0;
+            margin-top: 0;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 40px;
+
+            position: absolute;
+            left: 50%;
+            top: -50px;
+            margin-top: -2px;
+
+            background: $grey-color-light;
+        }
+
+        @include grid-media( $tablet ) {
+            float: left;
+            width: 140px;
+            height: 80px;
+            padding: 20px;
+            margin-left: 60px;
+            margin-top: 0;
+
+            &:before {
+                width: 40px;
+                height: 4px;
+
+                left: -50px;
+                top: 50%;
+                
+                margin-top: -2px;
+            }
+        }
+
+        @include grid-media( $laptop ) {
+            width: 160px;
+            padding: 20px 40px;
+            margin-left: 100px;
+
+            &:before {
+                width: 80px;
+                left: -90px;
+            }
+        }
+    }
+
+    &__line {
+        width: 4px;
+        height: 84%;
+
+        position: absolute;
+        left: -40px;
+        top: 8%;
+
+        background: $brand-color;
+
+        &:before,
+        &:after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 4px;
+
+            position: absolute;
+            left: 0;
+
+            background: $brand-color;
+        }
+
+        &:before {
+            top: 0;
+        }
+
+        &:after {
+            bottom: 0;
+        }
+
+        @include grid-media( $tablet ) {
+            width: 84%;
+            height: 4px;
+
+            position: absolute;
+            top: auto;
+            left: 8%;
+            bottom: -40px;
+
+            background: $brand-color;
+
+            &:before,
+            &:after {
+                content: '';
+                display: block;
+                width: 4px;
+                height: 30px;
+
+                position: absolute;
+                bottom: 0;
+
+                background: $brand-color;
+            }
+
+            &:before {
+                top: auto;
+                left: 0;
+            }
+
+            &:after {
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+
+    &__list {
+        display: block;
+        width: 350px;
+        margin: 80px auto 0;
+    }
+
+    &__label {
+        position: relative;
+        display: inline-block;
+        padding: 10px 10px 10px 60px;
+
+        border-radius: $round-border-radius;
+
+        text-transform: uppercase;
+        font-family: $base-font-family;
+        font-weight: $heading-font-weight;
+        font-size: $font-size-sm;
+
+        &:before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            margin-top: -1px;
+        }
+
+        &--agencies {
+            border: 2px solid $brand-support-primary;
+            color: $brand-support-primary;
+
+            &:before {
+                background: $brand-support-primary;
+            }
+        }
+
+        &--atorvia {
+            border: 2px solid $brand-color;
+            color: $brand-color;
+
+            &:before {
+                background: $brand-color;
+            }
+        }
+    }
+}

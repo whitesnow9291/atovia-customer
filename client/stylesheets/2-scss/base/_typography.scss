@@ -1,0 +1,21 @@
+$heading-sizes: (
+    'h1': $font-size-alpha,
+    'h2': $font-size-beta,
+    'h3': $font-size-gamma,
+    'h4': $font-size-delta,
+    'h5': $font-size-epsilon,
+    'h6': $font-size-zeta
+);
+
+// Define h1 - h6 sizes
+@each $name, $value in $heading-sizes {
+    #{$name} {
+        margin: 0 0 10px;
+
+        font-family: $base-font-family;
+        font-weight: $heading-font-weight;
+        font-size: $value;
+        color: $heading-color;
+    }
+}
+

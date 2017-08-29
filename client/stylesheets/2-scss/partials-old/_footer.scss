@@ -1,0 +1,35 @@
+.footer {
+	padding: 70px 0;
+	@extend .pull_left;
+	width: 100%;
+	@media (max-width: $phone){
+		padding: 35px 0;
+	}
+	.footer-logo {
+		margin-bottom: 50px;
+		@extend .inline-block;
+		@media (max-width: $phone){
+			margin-bottom: 25px;
+		}
+  }
+	p {
+		color: $grey-anchor;
+		font-size: $font-16;
+  }
+	h4 {
+		color: $label-color;
+		font-size: $font-16;
+		margin-bottom: 36px;
+  }
+	ul li {
+		color: $grey-anchor;
+		margin-bottom: 14px;
+		font-weight: $weight_700;
+		font-size: $font-14;
+  }
+	.social-link {
+		a {
+			margin-right: 18px;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+.container {
+    @include grid-container;
+
+    @include grid-media( $desktop ) {
+        max-width: 1170px;
+        margin: 0 auto;
+    }
+
+    // Modifiers
+    &--fluid {
+
+        @include grid-media( $desktop ) {
+            width: 100%;
+            max-width: none;
+            margin: 0 auto;
+        }
+    }
+}
+
+// Content section wrapper class
+.wrapper {
+    padding: 60px 0;
+
+    @include grid-media( $laptop ) {
+        padding: 100px 0;
+    }
+
+    &__inner {
+        @include grid-column;
+
+        &--content {
+            @include grid-column;
+
+            @include grid-media( $tablet ) {
+                @include grid-column(6);
+            }
+        }
+
+        &--image {
+            @include grid-column;
+
+            @include grid-media( $tablet ) {
+                @include grid-column(6);
+            }
+        }
+    }
+
+    // Modifiers
+    &--feature {
+        padding: 30px 0;
+        border-bottom: 1px solid $border-color;
+    }
+
+    &--legal {
+        padding: 50px 0;
+    }
+
+    &--newsletter {
+        padding: 0;
+    }
+
+    &--benefits {
+        // background: url(../img/pattern-benefits.png) calc(100% + 50px) -40px/ 50% auto no-repeat;
+
+        // @include grid-media( $tablet ) {
+        //     background-size: auto;
+        //     background-position: calc(100% - 50px) -40px;
+        // }
+
+        // @include grid-media( $laptop ) {
+        //     background-size: auto;
+        //     background-position: calc(100% - 50px) -40px;
+        // }
+    }
+
+    &--large {
+        
+        @include grid-media( $laptop ) {
+            padding: 150px 0;
+        }
+    }
+
+    &--grey {
+        background: $grey-color-bg;
+    }
+}
+
+// Dashboard
+.dashboard {
+    background: #F4F8F9;
+}

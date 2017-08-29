@@ -1,0 +1,308 @@
+.banner {
+	@include cover-background("../images/banner.jpg", $background-top:"100%", $background-left:"100%");
+
+	.navbar-toggleable-sm .navbar-collapse {
+		padding: 20px 15px;
+		display: inline-block!important;
+		@media (max-width: $ipad) {
+			height: 0;
+			padding: 0;
+			opacity: 0;
+    }
+		.nav-item {
+			padding-left: 50px;
+			@media (max-width: $ipad) {
+				padding: 0;
+      }
+			a {
+				color: $white;
+				font-size: $font-14;
+      }
+			&:hover {
+				margin-bottom: 2px solid #fff;
+      }
+
+			.dropdown-toggle {
+				@include border-radius (4px, 4px, 4px, 4px);
+				padding: 10px 15px;
+				margin-top: -5px;
+				@include border-all (1px, solid, $white-2);
+				@media (max-width: $ipad) {
+					display: inline-block;
+					margin-top: 5px;
+        }
+      }
+
+			.dropdown-menu {
+				left: auto;
+				@extend .right-0;
+				@include border-radius(0, 0, 0, 0);
+				top: 42px;
+				a {
+					color: $green-color;
+					font-size: $font-14;
+					font-weight: $weight_700;
+        }
+      }
+    }
+  }
+	.navbar-toggler-icon {
+		margin-top: 10px;
+		color: $white;
+		border: 0;
+  }
+
+	.search-box {
+		padding: 141px 0;
+		h1 {
+			color: $white;
+			margin-bottom: 	60px;
+			@media (max-width: $desktop) {
+				font-size: $font-32;
+				margin-bottom: 	30px;
+      }
+    }
+		.form-group {
+			@include border-radius (4px, 4px, 4px, 4px);
+			background: $white;
+			.left-icon {
+				@extend .absolute;
+				left: 10px;
+				top: 26px;
+				//@include border-all(2px, solid, $grey);
+				color: $grey;
+				@include border-radius (2px, 2px, 2px, 2px);
+				padding: 0 7px;
+				z-index: 5;
+      }
+			.form-control {
+				padding-left: 45px;
+				background: transparent;
+				border: 0;
+      }
+			.input-group-btn {
+				padding: 15px;
+				button {
+					@include border-radius (4px, 4px, 4px, 4px);
+					width: 160px;
+					span {
+						margin-right: 14px;
+          }
+					@media (max-width: $phone) {
+						width: 120px;
+          }
+        }
+      }
+    }
+  }
+}
+.destinations {
+	@include cover-background("../images/map.png", $background-top:"100%", $background-left:"100%");
+	padding: 145px 0;
+	@extend .pull_left;
+	background-color: $light-bg;
+	width: $full;
+	@media (max-width: $desktop) {
+		padding: 50px 0;
+  }
+	@media (max-width: $phone) {
+		padding: 25px 0;
+  }
+	h3 {
+		color: $black;
+		font-size: $font-36;
+		font-weight: $weight_900;
+		@extend .text-center;
+		margin-bottom: 130px;
+		@media (max-width: $desktop) {
+			margin-bottom: 50px;
+    }
+		@media (max-width: $phone) {
+			margin-bottom: 25px;
+			font-size: $font-24;
+    }
+  }
+}
+.destination-wrap {
+	@extend .relative;
+	height: 280px;
+	margin-bottom: 30px;
+
+	img {
+		height: $full;
+		width: $full;
+  }
+	p {
+		@extend .absolute;
+		@extend .left-0;
+		@extend .right-0;
+		color: $white;
+		font-size: $font-20;
+		bottom: 45px;
+		z-index: 5;
+		@extend .text-center;
+		font-weight: $weight_700;
+		margin: 0;
+  }
+}
+.deals {
+	@extend .pull_left;
+	width: $full;
+	padding: 100px 0;
+	@media (max-width: $desktop) {
+		padding: 50px 0;
+  }
+	@media (max-width: $phone) {
+		padding: 25px 0;
+  }
+	h3 {
+		color: $black;
+		font-size: $font-20;
+		font-weight: $weight_900;
+		@extend .text-center;
+		margin-bottom: 130px;
+		@media (max-width: $desktop) {
+			margin-bottom: 50px;
+    }
+		@media (max-width: $phone) {
+			margin-bottom: 25px;
+			font-size: $font-24;
+    }
+  }
+	.overlay{
+		@extend .absolute;
+		@extend .bottom-0;
+		@extend .left-0;
+		@extend .bottom-0;
+		@extend .right-0;
+		background: rgba(0, 0, 0, 0.5);
+		height: 100%;
+		z-index: 4;
+	}
+	.content {
+		@extend .absolute;
+		color: $white;
+		@extend .bottom-0;
+		@extend .left-0;
+		@extend .right-0;
+		z-index: 55;
+		padding: 20px 20px 15px;
+		h3 {
+			margin: 0;
+			color: $white;
+    }
+		p {
+			@extend .static;
+			@extend .pull_left;
+			margin-top: 40px;
+			max-width: 200px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			@media (max-width: $desktop) {
+				font-size: $font-18;
+      }
+			span {
+				margin-right: 5px;
+      }
+    }
+
+
+		h4 {
+			@extend .relative;
+			@media (max-width: $desktop) {
+				font-size: $font-20;
+      }
+			&:after {
+				@extend .absolute;
+				content: '';
+				left: 0;
+				height: 1px;
+				width:  80px;
+				background: $white;
+				bottom: -22px;
+      }
+    }
+		.col-4 {
+			p {
+				margin: 0;
+				@extend .pull_right;
+      }
+			h3 {
+				margin-top: 72px;
+				font-weight: $weight_400;
+				@extend .text-right;
+				@media (max-width: $desktop) {
+					font-size: $font-24;
+					margin-top: 63px;
+        }
+      }
+    }
+  }
+
+	.green-outline {
+		margin-top: 25px;
+  }
+}
+.news-letter {
+	padding: 95px 0;
+	background: $grey-bg;
+	@extend .pull_left;
+	width: $full;
+	h4 {
+		color: $label-color;
+		font-size: $font-24;
+		@extend .relative;
+		&:after {
+			@extend .absolute;
+			content: '';
+			left: 0;
+			height: 4px;
+			width:  100px;
+			background: $green-color;
+			bottom: -24px;
+    }
+  }
+	p {
+		margin-top: 35px;
+		color: $label-color;
+  }
+	.form-group {
+		@include border-radius (4px, 4px, 4px, 4px);
+		background: $white;
+		-webkit-box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.27);
+		-moz-box-shadow:  0px 0px 4px 2px rgba(0, 0, 0, 0.27);
+		box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.27);
+		.left-icon {
+			font-size: 22px;
+			@extend .absolute;
+			left: 10px;
+			top: 22px;
+
+			//@include border-all(2px, solid, $grey);
+			color: $grey;
+			@include border-radius (2px, 2px, 2px, 2px);
+			padding: 0 7px;
+			z-index: 5;
+
+    }
+		.form-control {
+			padding-left: 45px;
+			background: transparent;
+			border: 0;
+    }
+		.input-group-btn {
+			padding: 15px;
+			button {
+				@include border-radius (4px, 4px, 4px, 4px);
+				width: 160px;
+				span {
+					margin-right: 14px;
+        }
+				@media (max-width: $medium-phone) {
+					width: 96px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<main class="">
+	<navbar></navbar>
+	<section class="banner banner--{{ page.class }}">
+		<div class="container">
+			<div class="banner__content">
+				<h1 class="banner__heading">{{ page.heading }}</h1>
+				<p class="banner__text">Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum bibendum. Duis tincidunt urna non pretium porta. Nam condimentum vitae ligula vel ornare. Phasellus at semper turpis. Nunc eu tellus tortor.</p>
+			</div>
+		</div>
+	</section>
+
+  <div class="content-page" *ngIf="!!page">
+		<h3 class="page-heading">{{page.heading}}</h3>
+    <p class="main-contents content-page-content" [innerHTML]="page.contents"></p>
+  </div>
+
+  <app-footer></app-footer>
+</main>

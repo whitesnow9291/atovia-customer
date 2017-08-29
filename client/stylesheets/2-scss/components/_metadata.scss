@@ -1,0 +1,46 @@
+.meta {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    @include clearfix();
+
+    &__item {
+        position: relative;
+        float: left;
+        margin-left: 20px;
+
+        font-weight: $base-font-weight;
+        font-size: $font-size-sm;
+        line-height: 1.7;
+        color: $text-color;
+
+        &:first-child {
+            margin-left: 0;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        &:before {
+            content: "";
+            display: block;
+            width: 4px;
+            height: 4px;
+
+            position: absolute;
+            top: 50%;
+            left: -12px;
+            margin-top: -1px;
+
+            background: $brand-support-secondary;
+            border-radius: $circle-border-radius;
+        }
+
+        @include grid-media( $tablet ) {
+            font-size: $font-size-sd;
+            line-height: 1.4;
+        }
+    }
+}

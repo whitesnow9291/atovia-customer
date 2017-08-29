@@ -1,0 +1,42 @@
+// Override Standard Slick Styles - Not using BEM here
+.slick-dots {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    @include clearfix;
+
+    li {
+        float: left;
+        margin-left: 5px;
+        width: 12px;
+        height: 12px;
+
+        border-radius: $circle-border-radius;
+        border: 3px solid $brand-support-secondary;
+
+        @include transition(all 0.2s ease-in-out);
+
+        &.slick-active {
+            background: $brand-color;
+            border: 3px solid $brand-color;
+        }
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+        
+        button {
+            padding: 0;
+
+            border: 0;
+            background: transparent;
+
+            text-indent: -9999px;
+        }
+    }
+}

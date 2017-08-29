@@ -1,0 +1,59 @@
+<div class="review-list right-wrap" [ngClass]="{'active': activeTab=='reviews'}" id="reviews">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Reviews ({{itemsSize}})</h3>
+    </div>
+    <div class="col-sm-6 pull-right text-right reviewrating">
+      <star-rating [rating]="tour.rating" [disable]="true"></star-rating>
+    </div>
+  </div>
+  <p *ngIf="itemsSize == 0">No reviews have been added yet.</p>
+  <ul class="" *ngFor="let item of items">
+    <li class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="user-wrap">
+            <img *ngIf="! item.user.image?.url" src="images/user.png" alt=""/>
+            <img *ngIf="!! item.user.image?.url" src="uploads/images/{{item.user.image.id}}-60-60.jpg" alt=""/>
+          </div>
+        </div>
+        <div class="col-sm-10">
+          <div class="row">
+            <div class="col-sm-8">
+              <h4>{{item.user.firstName}} {{item.user.lastName}}
+                <star-rating [rating]="item.rating" [disable]="true" class="reviewStar"></star-rating>
+              </h4>
+            </div>
+            <div class="col-sm-4 pull-right text-right">
+              <p>{{item.createdAt | date}}</p>
+            </div>
+            <div class="">
+              <div class="col-sm-12">
+                <p>{{item.comments}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        </li>
+      </ul>
+      <div class="pagination-wrap paginationbutton" *ngIf="itemsSize > 0">
+        <pagination-template id="reviews" #p="paginationApi"
+             (pageChange)="onPageChanged($event)" >
+
+            <div class="row">
+              <div class="col-4">
+                <button type="button" class="btn green-btn" [disabled]="p.isFirstPage()" (click)="p.previous()"><span><i class="fa fa-angle-left" aria-hidden="true"></i></span> Previous</button>
+              </div>
+              <div class="col-4 text-center">
+                <p>page</p>
+                <h4 [innerHTML]="p.getCurrent() + '/' + p.getLastPage()"></h4>
+              </div>
+              <div class="col-4 text-right">
+                <button type="button" class="btn green-btn" [disabled]="p.isLastPage()" (click)="p.next()">Next <span><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+              </div>
+            </div>
+        </pagination-template>
+      </div>
+      </div>

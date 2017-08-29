@@ -1,0 +1,18 @@
+Hi ${supplier.profile.supplier.companyName}, <br />
+Booking has been cancelled by ${booking.user.firstName} ${booking.user.lastName} and refund request is made for the tour name ${booking.tour.name}. <br />
+Please find tour details below: <br />
+<br />
+<ul>
+<li>Booking ID: ${booking.uniqueId}</li>
+<li>Departure: ${booking.tour.departure}</li>
+<li>Destination: ${booking.tour.destination}</li>
+<li>Start Date: ${getFormattedDate(booking.startDate)} </li>
+<li>End Date: ${getFormattedDate(booking.endDate)} </li>
+<li>Num of Travellers: ${booking.numOfTravellers} </li>
+<li>Total Price: ${booking.totalPrice}</li>
+<li>Cancellation Date: ${getFormattedDate(booking.cancelledAt)}</li>
+<li>Cancellation Reason: ${booking.cancellationReason}.</li>
+<li>Cancellation Comments: ${booking.cancellationComments}</li>
+<li> View Link: <a href="${supplierAppUrl}/bookings/view/${booking._id}">${booking.tour.name}</a> </li>
+</ul>
+<p>Team Atorvia</p>

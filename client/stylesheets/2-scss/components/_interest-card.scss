@@ -1,0 +1,89 @@
+$interest-card-layout: (
+    columns: 3,
+    gutter: 20px
+);
+
+$interest-types: (
+    'relaxation',
+    'foodie',
+    'scenery',
+    'adventure',
+    'cultural',
+    'art',
+    'music'
+);
+
+.interest-wrapper {
+    @include grid-container;
+
+    @include grid-media( $laptop ) {
+        @include grid-collapse($interest-card-layout);
+    }
+}
+
+.interest-card {
+    position: relative;
+    height: 240px;
+    margin-bottom: 20px;
+
+    box-shadow: $card-box-shadow;
+    @include transition(all 0.2s ease-in-out);
+
+    @include grid-column;
+
+    @include grid-media( $tablet ) {
+        @include grid-column(1, $interest-card-layout);
+    }
+
+    &:hover {
+        box-shadow: $card-hover-box-shadow;
+        @include transform(translateY(-2px));
+    }
+
+    &__panel {
+        width: 100%;
+        padding: 15px;
+
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        @include background-image(linear-gradient( transparent 0, rgba(black, 0.75) 100%));
+    }
+
+    &__heading,
+    &__text {
+        text-shadow: 0 1px 4px rgba(black, 0.2);
+    }
+
+    &__heading {
+        margin-bottom: 5px;
+        
+        font-size: $font-size-delta;
+        color: white;
+    }
+
+    &__text {
+        margin-bottom: 0;
+
+        font-size: 14px;
+        color: white;
+    }
+
+    // Modifiers
+    &--featured {
+        @include grid-column;
+
+        @include grid-media( $laptop ) {
+            height: 500px;
+        }
+    }
+
+    // Generate classes for different type of interests
+    @each $type in $interest-types {
+
+        &--#{$type} {
+            background: url(../img/interests/interest-#{$type}.jpg) center center/cover no-repeat;
+        }
+    }
+}

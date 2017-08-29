@@ -1,0 +1,28 @@
+.forgot-pass .side-images
+{
+	@include cover-background('/images/forget-bg.png', 100%, 100%);
+}
+p {
+	color : $label-color;
+	font-size : $font-16;
+}
+h3 {
+	color : $label-color;
+	&:after {
+		background : $green-color;
+	}
+}
+h4 {
+	color : $green-anchor;
+	font-size : $font-26;
+	font-weight : $weight_700;
+}
+.green-btn
+{
+		@extend .full-btn;
+}
+.side-form .center-content 	.forgot-pass h4{
+	@media (max-width: $small_phone) {
+		font-size : $font-28;
+	}
+}

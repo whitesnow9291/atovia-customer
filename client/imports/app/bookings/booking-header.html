@@ -1,0 +1,87 @@
+<div class="detail-summary">
+    <div class="container">
+        <div class="row">
+        <div class="col-sm-7">
+            <div class="tour-details">
+            <h4>Tour Details</h4>
+            <div class="row">
+                <div class="col-md-2">
+                <div class="img-wrp">
+                    <span *ngIf="bookingDetails.tour.featuredImage?.url"><img src="uploads/images/{{bookingDetails.tour.featuredImage?.id}}-64-64.jpg" /></span>
+                </div>
+                </div>
+                <div class="col-md-10">
+                <h5>{{bookingDetails.tour.name}}</h5>
+                <p>
+                    <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>{{bookingDetails.tour.destination}}
+                    <star-rating *ngIf="!! tour" [rating]="tour.rating" [disable]="true"></star-rating>
+                </p>
+                </div>
+            </div>
+            <div class="row">
+                <ul>
+                <li class="col-md-4">
+                    <h6>Departure</h6>
+                    <p>{{bookingDetails.startDate | date}}</p>
+                </li>
+                <li class="col-md-4">
+                    <h6>Return</h6>
+                    <p>{{bookingDetails.endDate | date}}</p>
+                </li>
+                <li class="col-md-4">
+                    <h6>Travellers</h6>
+                    <p>{{bookingDetails.numOfTravellers}}
+                    </p>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="fee-summary">
+            <h4>Fees Summary</h4>
+            <ul>
+                <li>
+                <div class="left-content">
+                    <h5>{{bookingDetails.tour.name}}</h5>
+                    <h5>Travellers: {{bookingDetails.numOfTravellers}}</h5>
+                    <h5 >Adult x {{bookingDetails.numOfAdults}} -
+                      <small><currency [amount]="bookingDetails.pricePerAdult" [currencyCode]=bookingDetails.currencyCode [convert]=false></currency>
+                       x {{bookingDetails.numOfAdults}}</small>
+                     </h5>
+                     <h5 >Child x {{bookingDetails.numOfChild}} -
+                        <small><currency [amount]="bookingDetails.pricePerChild" [currencyCode]=bookingDetails.currencyCode [convert]=false></currency>
+                        x {{bookingDetails.numOfChild}}</small>
+                      </h5>
+                </div>
+                <div class="right-content">
+                    <h5>&nbsp;</h5>
+                    <p>Tax Inclusive</p>
+                    <h5><currency [amount]="bookingDetails.numOfAdults * bookingDetails.pricePerAdult" [currencyCode]=bookingDetails.currencyCode [convert]=false></currency></h5>
+                    <h5><currency [amount]="bookingDetails.numOfChild * bookingDetails.pricePerChild" [currencyCode]=bookingDetails.currencyCode [convert]=false></currency></h5>
+                </div>
+                </li>
+                <li>
+                <div class="left-content">
+                    <h5>Total purchases</h5>
+                    <h5>Taxes</h5>
+                </div>
+                <div class="right-content">
+                    <h5><currency [amount]=bookingDetails.totalPrice [currencyCode]=bookingDetails.currencyCode [convert]=false></currency></h5>
+                    <p><currency [amount]=taxAmount [currencyCode]=bookingDetails.currencyCode [convert]=false></currency></p>
+                </div>
+                </li>
+                <li>
+                <div class="left-content">
+                    <h5>Total purchases</h5>
+                </div>
+                <div class="right-content">
+                    <h2><currency [amount]=bookingDetails.totalPrice [currencyCode]=bookingDetails.currencyCode [convert]=false></currency></h2>
+                </div>
+                </li>
+            </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

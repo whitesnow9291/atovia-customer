@@ -1,0 +1,56 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    padding-top: 400px;
+
+    overflow: hidden;
+
+    @include grid-media( $large-mobile ) {
+        padding-top: 420px;
+    }
+
+    @include grid-media( $tablet ) {
+        padding-top: 550px;
+    }
+        
+    @include grid-media( $laptop ) {
+        height: 700px;
+        padding-top: 420px;
+    }
+
+    &__form {
+        box-shadow: $base-box-shadow;
+
+        @include grid-column;
+
+        @include grid-media( $tablet ) {
+            @include grid-column(10);
+            @include grid-push(1);
+        }
+        
+        @include grid-media( $laptop ) {
+            @include grid-column(6);
+            @include grid-push(0);
+        }
+    }
+
+    &__backdrop {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        z-index: -1;
+    }
+
+    &__cta {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        &--2 {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,110 @@
+/*=============================================
+=            Authenication Form            =
+=============================================*/
+
+.auth-form {
+    $root: &; // Setup parent as variable
+
+    &__row {
+        position: relative;
+        @include clearfix;
+
+        &--collapse {
+            @include grid-collapse;
+        }
+    }
+
+    &__column {
+        position: relative;
+        @include grid-column;
+
+        @include grid-media( $tablet ) {
+            @include grid-column(6);
+        }
+    }
+
+    &__icon {
+        width: 30px;
+
+        position: absolute;
+        right: 15px;
+        top: 35px;
+        z-index: -1;
+
+        font-size: $font-size-epsilon;
+        text-align: center;
+        color: $grey-color-lighter;
+
+        @include transition(color 0.25s ease-in-out);
+    }
+
+    &__input {
+        margin-bottom: 20px;
+        background: transparent;
+
+        &:focus {
+
+            + #{$root}__icon {
+                color: $brand-color;
+            }
+        }
+    }
+
+    &__button {
+        padding: 15px;
+
+        &--login {
+            width: 100%;
+        }
+    }
+
+    &__action {
+        display: block;
+        margin-bottom: 20px;
+
+        font-weight: $heading-font-weight;
+        font-size: $font-size-sd;
+        text-align: center;
+        color: $brand-support-main;
+
+        @include transition(color 0.25s ease-in-out);
+
+        &:hover {
+            color: $brand-color;
+        }
+
+        @include grid-media( $tablet ) {
+            float: right;
+            text-align: right;
+        }
+    }
+
+    &__cta {
+        margin-top: 20px;
+
+        font-size: $font-size-sd;
+        text-align: center;
+    }
+
+    &__link {
+        font-weight: $heading-font-weight;
+        font-size: $font-size-sd;
+        color: $brand-color;
+
+        &__icon {
+            margin-bottom: 3px;
+
+            font-size: $font-size-zeta;
+            vertical-align: middle;
+
+            @include transition(all 0.2s ease-in-out);
+
+            #{$root}:hover & {
+                @include transform(translateX(-8px));
+            }
+        }
+
+    }
+}
+
+/*=====  End of Authenication Form  ======*/

@@ -1,0 +1,131 @@
+.tour-card {
+    $root: &;
+    margin-bottom: 30px;
+
+    box-shadow: $card-box-shadow;
+    @include transition(all 0.2s ease-in-out);
+
+    &:hover {
+        box-shadow: $card-hover-box-shadow;
+        @include transform(translateY(-2px));
+    }
+
+    &__row {
+        @include clearfix();
+    }
+
+    &__thumb {
+        position: relative;
+        height: 200px;
+        max-height: 200px;
+        overflow: hidden;
+
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    &__panel {
+        position: relative;
+        padding: 15px;
+
+        @include clearfix();
+    }
+
+    &__info {
+        width: 100%;
+        padding: 60px 15px 15px;
+
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        @include background-image(linear-gradient( transparent 0, rgba(black, 0.8) 100%));
+        @include clearfix();
+    }
+
+    &__meta {
+        float: left;
+        margin-top: 20px;
+    }
+
+    &__type {
+        position: absolute;
+        left: 15px;
+        bottom: 15px;
+    }
+
+    &__price {
+        float: right;
+    }
+
+    &__name {
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 0;
+
+        text-transform: capitalize;
+        font-size: $font-size-zeta;
+        color: black;
+
+        @include grid-media( $tablet ) {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    &__location {
+        float: left;
+        margin: 0;
+
+        font-size: $font-size-sm;
+    }
+
+    &__extra {
+        float: right;
+
+        text-transform: capitalize;
+        font-weight: $heading-font-weight;
+        font-size: $font-size-sm;
+        color: $brand-color;
+        line-height: 1;
+
+        #{$root}__icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 3px;
+
+            background: $brand-color;
+            border-radius: $circle-border-radius;
+
+            text-align: center;
+            color: white;
+            line-height: 1.5;
+        }
+    }
+
+    &__icon {
+        margin-top: -3px;
+        vertical-align: middle;
+
+        font-size: $font-size-sd;
+        color: $brand-support-secondary;
+    }
+
+    // Modifiers
+    &--home {
+        max-width: 250px;
+        @include grid-column;
+
+        @include grid-media( $tablet ) {
+            max-width: none;
+
+            @include grid-column(6);
+        }
+
+        @include grid-media( $laptop ) {
+            @include grid-column(4);
+        }
+    }
+}

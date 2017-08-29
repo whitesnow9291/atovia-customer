@@ -1,0 +1,63 @@
+.mastfoot {
+    $root: &; // Setup parent as variable
+    padding: 40px 0 0;
+
+    @include background-image(linear-gradient( white 30%, $grey-color-bg 100%));
+
+    @include grid-media( $laptop ) {
+        padding: 150px 0 0;
+    }
+
+    &__menus {
+        margin-top: 30px;
+        
+        @include grid-column();
+
+        @include grid-media( $tablet ) {
+            margin-top: 0;
+
+            @include grid-column(4);
+        }
+
+        @include grid-media( $laptop ) {
+            margin-top: 0;
+
+            @include grid-column(2);
+        }
+
+        &--large {
+            margin-top: 40px;
+
+            @include grid-column();
+
+            @include grid-media( $laptop ) {
+                margin-top: 0;
+
+                @include grid-column(4);
+                @include grid-push(2);
+            }
+        }
+    }
+
+    &__heading {
+        margin-bottom: 30px;
+
+        text-transform: uppercase;
+        font-weight: $heading-font-weight;
+        font-size: $font-size-sm;
+        color: $label-color;
+    }
+
+    &__text {
+        font-size: $font-size-sd;
+    }
+
+    &__link {
+        position: relative;
+        @include transition(padding 0.2s ease-in-out);
+
+        &:hover {
+            color: $brand-color;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+<!--<header class="masthead {{#isnt basename "index"}}masthead--solid{{/isnt}}">-->
+<header class="masthead">
+    <div class="container--fluid">
+        <!--Responsive Menu Trigger-->
+        <div class="masthead__trigger">
+            <button class="offcanvas-trigger js-offcanvas-trigger" data-offcanvas-trigger="mobileMenu"><i class="material-icons offcanvas-trigger__icon">menu</i></button>
+        </div>
+        <!--Masthead Logo-->
+        <div class="masthead__logo">
+            <a [routerLink]="['/']" class="logo">
+                <img [src]="isHome ? whiteLogo : darkLogo" alt="" class="logo__image">
+            </a>
+        </div>
+        
+         <!-- Masthead Navigation -->
+        <nav class="masthead__nav">
+            <!-- Main navigation -->
+            <ul class="navigation navigation--left" [ngClass]="{'navigation--home': isHome}">
+                <li class="navigation__item"><a [routerLink]="['/top-destinations']" class="navigation__link">Destinations</a></li>
+                <li class="navigation__item"><a href="how-to-book.html" class="navigation__link">How to Book?</a></li>
+            </ul>
+            <!-- Auth Menu -->
+            <ul class="navigation navigation--right" *ngIf="!user" [ngClass]="{'navigation--home': isHome}">
+                <li class="navigation__item"><a [routerLink]="['/login']" class="navigation__link">Login</a></li>
+                <li class="navigation__item navigation__item--desktop-only">
+                  <a [routerLink]="['/signup']" class="navigation__link navigation__link--feature">Sign Up</a>
+                </li>
+            </ul>
+            <!-- User Menu -->
+            <ul class="navigation navigation--right" *ngIf="!! user" [ngClass]="{'navigation--home': isHome}">
+              <li class="navigation__item">
+                <div class="avatar masthead__avatar">
+                  <div class="avatar__image">
+                      <span class="avatar__image__initial">ET</span>
+                  </div>
+                  <h6 class="avatar__name">{{user.profile.fullName}}</h6>
+                </div>
+              </li>
+              <li class="navigation__item"><a href="#" class="navigation__link" (click)="logout()">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

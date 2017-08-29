@@ -1,0 +1,33 @@
+.feature-card {
+    padding: 20px;
+    margin-top: 20px;
+
+    background: white;
+    box-shadow: $card-box-shadow;
+
+    @include grid-column;
+
+    @include grid-media( $tablet ) {
+        margin-top: 100px;
+        @include grid-column(6);
+    }
+
+    @include grid-media( $laptop ) {
+        @include grid-column(3);
+    }
+
+    &__icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 40px;
+    }
+
+    &__heading {
+        margin-bottom: 20px;
+    }
+
+    &__text {
+        margin: 0;
+        font-size: $font-size-sd;
+    }
+}

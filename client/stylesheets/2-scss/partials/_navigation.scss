@@ -1,0 +1,82 @@
+.navigation {
+    $root: &;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    &__item {
+        float: left;
+        margin-left: 30px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &--desktop-only {
+            display: none;
+
+            @include grid-media( $tablet ) {
+                display: block;
+            }
+        }
+    }
+
+    &__link {
+        display: block;
+        padding: 8px 5px;
+        position: relative;
+
+        font-weight: $button-font-weight;
+        // font-size: $base-font-size;
+        font-size: $font-size-sd;
+        color: $label-color;
+
+        @include transition(all 0.2s ease-in-out);
+
+        &:hover {
+            opacity: 0.75;
+        }
+
+        // Modifier
+        &--feature {
+            padding: 8px 20px;
+
+            background: $brand-color;
+            border-radius: $round-border-radius;
+
+            color: white;
+
+            &:hover {
+                background: $brand-hover;
+                box-shadow: $hover-box-shadow;
+                color: white;
+            }
+        }
+
+        #{$root}--home & {
+            color: white;
+        }
+    }
+
+    &__icon {
+        margin-top: -3px;
+        margin-right: 5px;
+
+        font-size: $base-font-size;
+        vertical-align: middle;
+    }
+
+    // Modifiers
+    &--left {
+        float: left;
+        display: none;
+
+        @include grid-media( $tablet ) {
+            display: block;
+        }
+    }
+
+    &--right {
+        float: right;
+    }
+}

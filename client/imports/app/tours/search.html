@@ -1,0 +1,206 @@
+<main class="search">
+	<!--banner-->
+	<section class="banner">
+		<div class="container-fluid">
+			<navbar></navbar>
+		</div>
+		<div class="container">
+			<div class="row justify-content-md-center align-items-center">
+				<div class="col-lg-12 align-self-center">
+					<div class="search-box" *ngIf="isSearchScreen">
+						<h1 *ngIf="!!searchString">Search Results for "{{searchString}}"</h1>
+						<p *ngIf="itemsSize > 0">We found {{itemsSize}} tours for you.</p>
+					</div>
+					<div class="search-box text-center" *ngIf="! isSearchScreen">
+						<h1>{{searchString}}</h1>
+						<p *ngIf="itemsSize > 0">{{itemsSize}} Tours</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--banner-->
+
+	<!--user-head-->
+	<div class="user-head">
+		<div class="container">
+			<div class="row justify-content-sm-center">
+				<div class="col-xl-10">
+					<div class="row sort-bar">
+						<div class="col-6">
+							<a [routerLink]="['/']"><span><i class="fa fa-angle-left" aria-hidden="true"></i></span>Back to HomePage</a>
+						</div>
+						<div class="col-6">
+							<div class="dropdown">
+								<div class="select-style">
+									<span><img src="images/sort.png" alt=""/></span>
+									<select class="select" (change)="changeOrderBy(sortOrder.value)" #sortOrder>
+										<option>Sort</option>
+										<option value="tour_asc">Tour (A - Z)</option>
+										<option value="tour_desc">Tour (Z - A)</option>
+										<option value="length_asc">Length (Low - High)</option>
+										<option value="length_desc">Length (High - Low)</option>
+										<option value="availability_asc">Availability (Min - Max)</option>
+										<option value="availability_desc">Availability (Max - Min)</option>
+										<option value="price_asc">Price From (Min - Max)</option>
+										<option value="price_desc">Price From (Max - Min)</option>
+									</select>
+								</div>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+									<button class="dropdown-item" type="button">Action</button>
+									<button class="dropdown-item" type="button">Another action</button>
+									<button class="dropdown-item" type="button">Something else here</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--user-head-->
+	<!--search-list-->
+	<div class="search-list">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="filter-wrap">
+						<button class="hide"><i class="fa fa-filter" aria-hidden="true"></i></button>
+						<div class="filter">
+							<h3>Filter</h3>
+							<h4>Pace</h4>
+							<ul>
+								<li class="form-checkbox">
+									<label class="custom-control custom-checkbox">
+										<span class="custom-control-description">Slow</span>
+										<input type="checkbox" class="custom-control-input" value="Slow" (change)="updatePaceOptions('Slow', $event)">
+										<span class="custom-control-indicator"></span>
+									</label>
+								</li>
+								<li class="form-checkbox">
+									<label class="custom-control custom-checkbox">
+										<span class="custom-control-description">Medium</span>
+										<input type="checkbox" class="custom-control-input" value="Medium" (change)="updatePaceOptions('Medium', $event)">
+										<span class="custom-control-indicator"></span>
+									</label>
+								</li>
+								<li class="form-checkbox">
+									<label class="custom-control custom-checkbox">
+										<span class="custom-control-description">Fast</span>
+										<input type="checkbox" class="custom-control-input" value="Fast" (change)="updatePaceOptions('Fast', $event)">
+										<span class="custom-control-indicator"></span>
+									</label>
+								</li>
+							</ul>
+							<h4>Type</h4>
+							<ul>
+								<li class="form-checkbox">
+									<label class="custom-control custom-checkbox">
+										<span class="custom-control-description">Family Friendly</span>
+										<input type="checkbox" class="custom-control-input" value="Family friendly" (change)="updateTourOptions('Family friendly', $event)">
+										<span class="custom-control-indicator"></span>
+									</label>
+								</li>
+								<li class="form-checkbox">
+									<label class="custom-control custom-checkbox">
+										<span class="custom-control-description">Honeymoon</span>
+										<input type="checkbox" class="custom-control-input" value="Honeymoon" (change)="updateTourOptions('Honeymoon', $event)">
+										<span class="custom-control-indicator"></span>
+									</label>
+								</li>
+								<li class="form-checkbox">
+									<label class="custom-control custom-checkbox">
+										<span class="custom-control-description">Adventure</span>
+										<input type="checkbox" class="custom-control-input" value="Adventure" (change)="updateTourOptions('Adventure', $event)">
+										<span class="custom-control-indicator"></span>
+									</label>
+								</li>
+								<li class="form-checkbox">
+									<label class="custom-control custom-checkbox">
+										<span class="custom-control-description">Designed For Couples</span>
+										<input type="checkbox" class="custom-control-input" value="Designed For Couples" (change)="updateTourOptions('Designed For Couples', $event)">
+										<span class="custom-control-indicator"></span>
+									</label>
+								</li>
+							</ul>
+							<h4>Price Range</h4>
+							<input type="hidden" id="filterPrice" #filterPrice (click)="changePrice(filterPrice.value)" />
+							<div class="slider-box-custom">
+								<p>
+										<span id="startPriceRange" [innerHTML]="currencyCode + 0"></span>
+										<span id="endPriceRange" [innerHTML]="currencyCode + 10000"></span>
+								</p>
+							  <div id="price-range" class="slider-custom" ></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<ul class="listing">
+						<li *ngFor="let tour of items">
+							<div class="side-image">
+								<a [routerLink]="['/tours', tour.slug]">
+									<span *ngIf="!tour.images?.length"><img src="/images/destination.png" /></span>
+			            <span *ngIf="tour.images?.length > 0 && tour.featuredImage?.url"><img src="uploads/images/{{tour.featuredImage.id}}-255-255.jpg" /></span>
+			            <span *ngIf="tour.images?.length > 0 && !tour.featuredImage?.url"><img src="uploads/images/{{tour.images[0]?.id}}-255-255.jpg" /></span>
+								</a>
+							</div>
+							<div class="list-cotent">
+								<div class="list-detail">
+									<h4 [routerLink]="['/tours', tour.slug]">{{tour.name}} <a [routerLink]="['/tours', tour.slug]"><i class="fa fa-angle-right" aria-hidden="true"></i></a></h4>
+									<p>
+										<span><i class="fa fa-map-marker" aria-hidden="true"></i></span>{{tour.destination}}
+										<star-rating [rating]="tour.rating" [disable]="true"></star-rating>
+									</p>
+								</div>
+								<div class="info">
+									<h3><span class="grey-box">
+										<img src="images/user.png" alt="" *ngIf="! tour?.owner.image?.id" />
+			              <img src="uploads/images/{{tour?.owner.image.id}}-40-40.jpg" alt="" *ngIf="!! tour?.owner.image?.id" />
+									</span>{{tour.owner.companyName}}<span><i class="fa fa-check-circle" aria-hidden="true"></i></span></h3>
+									<p>{{tour.description}}</p>
+									<ul>
+										<li>
+											<h5>Pace</h5>
+											<p>{{tour.tourPace}}</p>
+										</li>
+										<li>
+											<h5>Type</h5>
+											<p>{{tour.tourType}}</p>
+										</li>
+										<li>
+											<h5>Price From</h5>
+											<p>
+												<currency [amount]=getStartPrice(tour.dateRange)></currency> / PP
+											</p>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+
+					<div class="pagination-wrap">
+						<pagination-template id="tours" #p="paginationApi"
+                 (pageChange)="onPageChanged($event)" >
+
+								<div class="row">
+									<div class="col-4">
+										<button type="button" class="btn green-btn" [disabled]="p.isFirstPage()" (click)="p.previous()"><span><i class="fa fa-angle-left" aria-hidden="true"></i></span> Previous</button>
+									</div>
+									<div class="col-4 text-center">
+										<p>page</p>
+										<h4 [innerHTML]="p.getCurrent() + '/' + p.getLastPage()"></h4>
+									</div>
+									<div class="col-4 text-right">
+										<button type="button" class="btn green-btn" [disabled]="p.isLastPage()" (click)="p.next()">Next <span><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+									</div>
+								</div>
+						</pagination-template>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<app-footer></app-footer>
+</main>

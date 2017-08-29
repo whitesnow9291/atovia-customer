@@ -1,0 +1,62 @@
+// Mobile Responsive Trigger
+.offcanvas-trigger {
+    padding: 5px;
+    margin: 0;
+    
+    background: transparent;
+    border: 0;
+
+    font-family: $base-font-family;
+    font-weight: $heading-font-weight;
+    color: white;
+
+    @include grid-media( $tablet ) {
+        display: none;
+    }
+
+    &:hover {
+        color: $brand-color;
+        cursor: pointer;
+    }
+
+    &__icon {
+        font-size: 30px;
+        vertical-align: middle;
+    }
+}
+
+// Offcanvas Content Wrapper
+.offcanvas-wrapper {
+    min-height: 100%;
+    background: transparent;
+
+    @include transition(transform .33s cubic-bezier(.694,.0482,.335,1),-webkit-transform .33s cubic-bezier(.694,.0482,.335,1));
+    
+    &.is-open {
+        box-shadow: -2px 0 15px rgba(black, 0.2);
+        z-index: 7;
+    }
+}
+
+// Offcanvas Drawer
+.offcanvas {
+    // width: 60%;
+    padding: 30px;
+
+    @include transition(transform .33s cubic-bezier(.694,.0482,.335,1),-webkit-transform .33s cubic-bezier(.694,.0482,.335,1));
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+// Override existing offcanvas styles
+.c-offcanvas-bg {
+    background: transparent!important;
+    @include transition(transform .33s cubic-bezier(.694,.0482,.335,1),-webkit-transform .33s cubic-bezier(.694,.0482,.335,1));
+
+    &.is-open {
+        background: transparent!important;
+        z-index: 8;
+    }
+}

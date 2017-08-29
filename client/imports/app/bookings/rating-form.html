@@ -1,0 +1,115 @@
+<header-main *ngIf="!! user"></header-main>
+<main class="allbooking booking2" *ngIf="!! booking">
+  <div class="grey-bg">
+    <div class="container">
+      <div class="row justify-content-sm-center">
+        <div class="col-xl-10">
+          <div class="row">
+            <div class="col-md-4">
+              <a [routerLink]="['/bookings']" class="green-anchor"><span><i class="fa fa-angle-left" aria-hidden="true"></i></span>See all bookings</a>
+            </div>
+            <div class="col-md-8 text-right side-btn">
+              <!-- <button class="btn grey-btn">Cancel Tour</button> -->
+              <!--<button class="btn green-btn pull-right" style="width: 200px;">Download Voucher</button>-->
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-10">
+          <!--booking-details-->
+          <div class="booking-details">
+            <div class="booking-img">
+              <img *ngIf="! booking.tour.featuredImage?.url" src="images/trip.png" alt="">
+              <img *ngIf="!! booking.tour.featuredImage?.url" [src]="booking.tour.featuredImage?.url" alt="">
+            </div>
+            <div class="booking-desc">
+              <div class="hdr">
+                <h3>{{booking.tour.name}}</h3>
+                <p><span><i class="fa fa-map-marker" aria-hidden="true"></i></span>{{booking.tour.departure}} &amp; {{booking.tour.destination}}</p>
+              </div>
+              <div class="booking-info">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h6>Booking ID</h6>
+                    <p *ngIf="!! booking.uniqueId">{{booking.uniqueId}}</p>
+                    <p *ngIf="! booking.uniqueId">N.A</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <h6>Booking date</h6>
+                    <p>{{booking.bookingDate | date}}</p>
+                  </div>
+                  <div class="col-sm-4">
+                    <h6>Status</h6>
+                    <p>{{bookingStatus}}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-7">
+                    <h6>Departure</h6>
+                    <p>{{booking.startDate | date}} <span class="green-label" *ngIf="departInDays > 0">Depart in {{departInDays}} days</span></p>
+                  </div>
+                  <div class="col-md-5">
+                    <h6>Return</h6>
+                    <p>{{booking.endDate | date}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-10" *ngIf="! booking.cancelled">
+          <div class="booking-details cancel-form">
+            <h3>Booking Rating Form</h3>
+            <form [formGroup]="ratingForm" #f="ngForm">
+              <div class="row">
+                <div class="col-sm-6">
+                  <span class="rate" *ngIf="booking.completed == true">
+                    <input type="radio" id="rating10" name="rating" value="10" />
+                    <label for="rating10" (click)="rating = 5"></label>
+                    <input type="radio" id="rating9" name="rating" value="9" />
+                    <label class="half" for="rating9" (click)="rating = 4.5"></label>
+                    <input type="radio" id="rating8" name="rating" value="8" />
+                    <label for="rating8" (click)="rating = 4"></label>
+                    <input type="radio" id="rating7" name="rating" value="7" />
+                    <label class="half" for="rating7" (click)="rating = 3.5"></label>
+                    <input type="radio" id="rating6" name="rating" value="6" />
+                    <label for="rating6" (click)="rating = 3"></label>
+                    <input type="radio" id="rating5" name="rating" value="5" />
+                    <label class="half" for="rating5" (click)="rating = 2.5"></label>
+                    <input type="radio" id="rating4" name="rating" value="4" />
+                    <label for="rating4" (click)="rating = 2"></label>
+                    <input type="radio" id="rating3" name="rating" value="3" />
+                    <label class="half" for="rating3" (click)="rating = 1.5"></label>
+                    <input type="radio" id="rating2" name="rating" value="2" />
+                    <label for="rating2" (click)="rating = 1"></label>
+                    <input type="radio" id="rating1" name="rating" value="1" />
+                    <label class="half" for="rating1" (click)="rating = 0.5"></label>
+                    <input type="radio" id="rating0" name="rating" value="0" />
+                    <label for="rating0" (click)="rating = 0" style="display:none;"></label>
+                  </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="comments">Reviews</label>
+                    <textarea class="form-control" placeholder="Leave your reviews..." formControlName="comments"></textarea>
+                  </div>
+                  <div *ngIf="ratingForm.controls['comments'].errors && ratingForm.controls['comments'].touched" class="has-error">
+                    <div *ngIf="ratingForm.controls.comments.hasError('required')">You have to fill in reviews.</div>
+                    <div *ngIf="ratingForm.controls.comments.hasError('minlength')">Min 2 character required.</div>
+                    <div *ngIf="ratingForm.controls.comments.hasError('maxlength')">Maximum 255 characters allowed.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+                  <button class="btn green-btn" (click)="reviewTour()">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

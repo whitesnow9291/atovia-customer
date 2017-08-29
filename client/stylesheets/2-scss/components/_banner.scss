@@ -1,0 +1,71 @@
+$banners: (
+    'howto',
+    'contact',
+    'legal',
+    'partner'
+);
+
+.banner {
+    padding: 150px 0 50px;
+    
+    @include grid-media( $laptop ) {
+        padding: 200px 0;
+        background: url(../img/bg-howto-lg.jpg) right bottom/auto 100% no-repeat;
+    }
+
+    &__content {
+        @include grid-column;
+
+        @include grid-media( $tablet ) {
+            @include grid-column(6);
+        }
+    }
+
+    &__heading {
+        position: relative;
+        margin-bottom: 60px;
+
+        font-size: $font-size-beta;
+
+        &:before {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 6px;
+
+            position: absolute;
+            left: 0;
+            bottom: -20px;
+
+            background: $brand-color;
+        }
+    }
+
+    &__text {
+        margin-bottom: 40px;
+
+        font-size: $font-size-zeta;
+        @include grid-push(1);
+
+        &:nth-of-type(1) {
+            margin-bottom: 0;
+        }
+    }
+
+    // Modifiers
+    // Generate class modifiers for banners
+    @each $banner in $banners {
+
+        &--#{$banner} {
+            background: $banner-bg;
+
+            @include grid-media( $tablet ) {
+                background: $banner-bg url(../img/bg-#{$banner}-lg.jpg) right bottom/auto 100% no-repeat;
+            }
+        }
+    }
+
+    &--legal {
+        padding: 200px 0 100px;
+    }
+}

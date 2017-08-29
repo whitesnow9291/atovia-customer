@@ -1,0 +1,38 @@
+.price {
+
+    &__text,
+    &__currency,
+    &__amount {
+        text-align: right;
+        color: white;
+        
+        line-height: 1;
+    }
+
+    &__text {
+        display: block;
+        margin-bottom: 5px;
+
+        font-weight: $heading-font-weight;
+        font-size: $font-size-sm;
+    }
+
+    &__currency {
+        display: inline-block;
+        vertical-align: top;
+        padding-top: 3px;
+
+        font-weight: $heading-font-weight;
+        font-size: $font-size-sd;
+    }
+
+    &__amount {
+        display: inline-block;
+        vertical-align: top;
+
+        margin-left: 5px;
+
+        font-weight: $medium-font-weight;
+        font-size: $font-size-delta;
+    }
+}
